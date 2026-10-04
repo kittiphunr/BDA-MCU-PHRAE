@@ -12,19 +12,161 @@ window.TOUR = {
     "rooms": [
       {
         "label": "ห้องจัดแสดง หอพุทธศิลป์",
-        "x": 2.5,
-        "y": 16.93,
-        "w": 95.0,
-        "h": 29.06
+        "x": -7.61,
+        "y": 11.63,
+        "w": 70.51,
+        "h": 24.96
       },
       {
         "label": "ระเบียงทางเดิน",
-        "x": 8.25,
-        "y": 3.0,
-        "w": 86.6,
-        "h": 14.21
+        "x": 47.33,
+        "y": -5.03,
+        "w": 53.51,
+        "h": 16.66
       }
     ]
+  },
+  "model": {
+    "scale": 0.20625,
+    "height": 2.142,
+    "railHeight": 0.6,
+    "rooms": [
+      {
+        "label": "ห้องจัดแสดง หอพุทธศิลป์",
+        "x": -7.61,
+        "y": 11.63,
+        "w": 70.51,
+        "h": 24.96,
+        "kind": "hall"
+      },
+      {
+        "label": "ระเบียงทางเดิน",
+        "x": 47.33,
+        "y": -5.03,
+        "w": 53.51,
+        "h": 16.66,
+        "kind": "corridor"
+      }
+    ],
+    "atlas": {
+      "image": "images/model/atlas.jpg",
+      "cols": 4,
+      "rows": 7,
+      "cells": {
+        "p048": [
+          0,
+          0
+        ],
+        "p053": [
+          1,
+          0
+        ],
+        "p060": [
+          2,
+          0
+        ],
+        "p069": [
+          3,
+          0
+        ],
+        "p072": [
+          0,
+          1
+        ],
+        "p075": [
+          1,
+          1
+        ],
+        "p080": [
+          2,
+          1
+        ],
+        "p089": [
+          3,
+          1
+        ],
+        "p096": [
+          0,
+          2
+        ],
+        "p116": [
+          1,
+          2
+        ],
+        "p122": [
+          2,
+          2
+        ],
+        "p128": [
+          3,
+          2
+        ],
+        "p136": [
+          0,
+          3
+        ],
+        "p143": [
+          1,
+          3
+        ],
+        "p145": [
+          2,
+          3
+        ],
+        "p151": [
+          3,
+          3
+        ],
+        "p158": [
+          0,
+          4
+        ],
+        "p177": [
+          1,
+          4
+        ],
+        "p183": [
+          2,
+          4
+        ],
+        "p194": [
+          3,
+          4
+        ],
+        "p195": [
+          0,
+          5
+        ],
+        "p201": [
+          1,
+          5
+        ],
+        "p203": [
+          2,
+          5
+        ],
+        "p206": [
+          3,
+          5
+        ],
+        "p210": [
+          0,
+          6
+        ],
+        "p212": [
+          1,
+          6
+        ],
+        "p215": [
+          2,
+          6
+        ],
+        "p220": [
+          3,
+          6
+        ]
+      }
+    }
   },
   "scenes": [
     {
@@ -33,10 +175,10 @@ window.TOUR = {
       "description": "เครื่องมือเครื่องใช้พื้นบ้าน หูก กี่ทอผ้า และบอร์ดนิทรรศการพุทธศิลป์",
       "image": "images/panoramas/p048.jpg",
       "map": {
-        "x": 4.37,
-        "y": 37.48
+        "x": 4.18,
+        "y": 24.99
       },
-      "northOffset": 101.3,
+      "northOffset": 101.1,
       "links": [
         {
           "to": "p060"
@@ -66,9 +208,9 @@ window.TOUR = {
       "image": "images/panoramas/p053.jpg",
       "map": {
         "x": 4.0,
-        "y": 25.39
+        "y": 18.51
       },
-      "northOffset": 90.4,
+      "northOffset": 90.2,
       "links": [
         {
           "to": "p060"
@@ -91,10 +233,10 @@ window.TOUR = {
       "description": "เครื่องมือเครื่องใช้พื้นบ้าน หูก กี่ทอผ้า และบอร์ดนิทรรศการพุทธศิลป์",
       "image": "images/panoramas/p060.jpg",
       "map": {
-        "x": 13.93,
-        "y": 36.17
+        "x": 9.3,
+        "y": 24.31
       },
-      "northOffset": 86.3,
+      "northOffset": 86.2,
       "links": [],
       "infos": [
         {
@@ -137,10 +279,10 @@ window.TOUR = {
       "description": "ภาพจิตรกรรมพุทธศิลป์ร่วมสมัยและมุมสักการะรูปเหมือนพระเถระ",
       "image": "images/panoramas/p069.jpg",
       "map": {
-        "x": 24.68,
-        "y": 43.5
+        "x": 15.05,
+        "y": 28.26
       },
-      "northOffset": -174.0,
+      "northOffset": -174.2,
       "links": [
         {
           "to": "p072"
@@ -160,10 +302,10 @@ window.TOUR = {
       "description": "ภาพจิตรกรรมพุทธศิลป์ร่วมสมัยและมุมสักการะรูปเหมือนพระเถระ",
       "image": "images/panoramas/p072.jpg",
       "map": {
-        "x": 23.93,
-        "y": 32.95
+        "x": 14.67,
+        "y": 22.6
       },
-      "northOffset": 83.0,
+      "northOffset": 82.8,
       "links": [
         {
           "to": "p080"
@@ -197,10 +339,10 @@ window.TOUR = {
       "description": "ภาพจิตรกรรมพุทธศิลป์ร่วมสมัยและมุมสักการะรูปเหมือนพระเถระ",
       "image": "images/panoramas/p075.jpg",
       "map": {
-        "x": 32.07,
-        "y": 22.89
+        "x": 19.05,
+        "y": 17.22
       },
-      "northOffset": -175.0,
+      "northOffset": -175.1,
       "links": [
         {
           "to": "p080"
@@ -220,10 +362,10 @@ window.TOUR = {
       "description": "ภาพจิตรกรรมพุทธศิลป์ร่วมสมัยและมุมสักการะรูปเหมือนพระเถระ",
       "image": "images/panoramas/p080.jpg",
       "map": {
-        "x": 32.46,
-        "y": 32.88
+        "x": 19.24,
+        "y": 22.58
       },
-      "northOffset": 94.2,
+      "northOffset": 94.0,
       "links": [
         {
           "to": "p096"
@@ -257,10 +399,10 @@ window.TOUR = {
       "description": "ภาพจิตรกรรมพุทธศิลป์ร่วมสมัยและมุมสักการะรูปเหมือนพระเถระ",
       "image": "images/panoramas/p089.jpg",
       "map": {
-        "x": 38.52,
-        "y": 44.49
+        "x": 22.47,
+        "y": 28.81
       },
-      "northOffset": 6.1,
+      "northOffset": 5.9,
       "links": [
         {
           "to": "p122"
@@ -277,10 +419,10 @@ window.TOUR = {
       "description": "คัมภีร์โบราณ เครื่องสักการะ และงานจิตรกรรมบนแผ่นไม้",
       "image": "images/panoramas/p096.jpg",
       "map": {
-        "x": 41.28,
-        "y": 28.14
+        "x": 23.97,
+        "y": 20.05
       },
-      "northOffset": -0.1,
+      "northOffset": -0.2,
       "links": [
         {
           "to": "p116"
@@ -317,10 +459,10 @@ window.TOUR = {
       "description": "คัมภีร์โบราณ เครื่องสักการะ และงานจิตรกรรมบนแผ่นไม้",
       "image": "images/panoramas/p116.jpg",
       "map": {
-        "x": 46.7,
-        "y": 18.43
+        "x": 26.9,
+        "y": 14.85
       },
-      "northOffset": 1.3,
+      "northOffset": 1.1,
       "links": [
         {
           "to": "p143"
@@ -334,10 +476,10 @@ window.TOUR = {
       "description": "คัมภีร์โบราณ เครื่องสักการะ และงานจิตรกรรมบนแผ่นไม้",
       "image": "images/panoramas/p122.jpg",
       "map": {
-        "x": 51.63,
-        "y": 38.49
+        "x": 29.51,
+        "y": 25.61
       },
-      "northOffset": -1.1,
+      "northOffset": -1.3,
       "links": [
         {
           "to": "p128"
@@ -411,10 +553,10 @@ window.TOUR = {
       "description": "คัมภีร์โบราณ เครื่องสักการะ และงานจิตรกรรมบนแผ่นไม้",
       "image": "images/panoramas/p128.jpg",
       "map": {
-        "x": 61.36,
-        "y": 42.62
+        "x": 34.71,
+        "y": 27.84
       },
-      "northOffset": 8.6,
+      "northOffset": 8.4,
       "links": [
         {
           "to": "p151"
@@ -431,10 +573,10 @@ window.TOUR = {
       "description": "พระพุทธรูปหลากหลายพุทธลักษณะที่จัดแสดงบนแท่นไม้",
       "image": "images/panoramas/p136.jpg",
       "map": {
-        "x": 62.43,
-        "y": 27.49
+        "x": 35.31,
+        "y": 19.74
       },
-      "northOffset": 9.7,
+      "northOffset": 9.5,
       "links": [
         {
           "to": "p143"
@@ -460,10 +602,10 @@ window.TOUR = {
       "description": "พระพุทธรูปหลากหลายพุทธลักษณะที่จัดแสดงบนแท่นไม้",
       "image": "images/panoramas/p143.jpg",
       "map": {
-        "x": 64.95,
-        "y": 21.88
+        "x": 36.67,
+        "y": 16.73
       },
-      "northOffset": -11.3,
+      "northOffset": -11.4,
       "links": [
         {
           "to": "p145"
@@ -486,10 +628,10 @@ window.TOUR = {
       "description": "พระพุทธรูปหลากหลายพุทธลักษณะที่จัดแสดงบนแท่นไม้",
       "image": "images/panoramas/p145.jpg",
       "map": {
-        "x": 69.76,
-        "y": 21.93
+        "x": 39.25,
+        "y": 16.76
       },
-      "northOffset": -2.2,
+      "northOffset": -2.4,
       "links": [
         {
           "to": "p158"
@@ -523,10 +665,10 @@ window.TOUR = {
       "description": "พระพุทธรูปหลากหลายพุทธลักษณะที่จัดแสดงบนแท่นไม้",
       "image": "images/panoramas/p151.jpg",
       "map": {
-        "x": 69.33,
-        "y": 35.23
+        "x": 39.0,
+        "y": 23.89
       },
-      "northOffset": 5.8,
+      "northOffset": 5.6,
       "links": [
         {
           "to": "p158"
@@ -557,10 +699,10 @@ window.TOUR = {
       "description": "ธรรมาสน์ บุษบก สัปทน และเครื่องประกอบพิธีกรรมทางพุทธศาสนา",
       "image": "images/panoramas/p158.jpg",
       "map": {
-        "x": 78.05,
-        "y": 31.97
+        "x": 43.68,
+        "y": 22.16
       },
-      "northOffset": -88.3,
+      "northOffset": -88.5,
       "links": [
         {
           "to": "p177"
@@ -615,10 +757,10 @@ window.TOUR = {
       "description": "ธรรมาสน์ บุษบก สัปทน และเครื่องประกอบพิธีกรรมทางพุทธศาสนา",
       "image": "images/panoramas/p177.jpg",
       "map": {
-        "x": 84.71,
-        "y": 31.49
+        "x": 47.25,
+        "y": 21.91
       },
-      "northOffset": -82.1,
+      "northOffset": -82.3,
       "links": [
         {
           "to": "p194"
@@ -665,10 +807,10 @@ window.TOUR = {
       "description": "พระพุทธรูปประทับนั่งพร้อมเครื่องสักการะ และจิตรกรรมพื้นหลัง",
       "image": "images/panoramas/p183.jpg",
       "map": {
-        "x": 96.0,
-        "y": 39.89
+        "x": 53.28,
+        "y": 26.43
       },
-      "northOffset": 2.2,
+      "northOffset": 2.0,
       "links": [
         {
           "to": "p194"
@@ -699,10 +841,10 @@ window.TOUR = {
       "description": "แผงพระพิมพ์ที่ประดิษฐานพระพุทธรูปองค์เล็กจำนวนมาก ใกล้ประตูทางออก",
       "image": "images/panoramas/p194.jpg",
       "map": {
-        "x": 94.61,
-        "y": 20.86
+        "x": 52.57,
+        "y": 16.23
       },
-      "northOffset": 9.2,
+      "northOffset": 9.0,
       "links": [
         {
           "to": "p195"
@@ -725,10 +867,10 @@ window.TOUR = {
       "description": "ประตูเชื่อมระหว่างห้องจัดแสดงกับระเบียงด้านนอก",
       "image": "images/panoramas/p195.jpg",
       "map": {
-        "x": 93.85,
-        "y": 7.45
+        "x": 52.18,
+        "y": 3.89
       },
-      "northOffset": 4.6,
+      "northOffset": 4.5,
       "links": [
         {
           "to": "p201"
@@ -742,10 +884,10 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p201.jpg",
       "map": {
-        "x": 74.27,
-        "y": 6.18
+        "x": 61.14,
+        "y": 4.12
       },
-      "northOffset": -179.7,
+      "northOffset": 0.1,
       "links": [
         {
           "to": "p203"
@@ -759,10 +901,10 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p203.jpg",
       "map": {
-        "x": 60.85,
-        "y": 5.57
+        "x": 68.33,
+        "y": 4.47
       },
-      "northOffset": 179.5,
+      "northOffset": -0.7,
       "links": [
         {
           "to": "p206"
@@ -776,10 +918,10 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p206.jpg",
       "map": {
-        "x": 47.42,
-        "y": 5.16
+        "x": 75.53,
+        "y": 4.71
       },
-      "northOffset": 179.1,
+      "northOffset": -1.1,
       "links": [
         {
           "to": "p210"
@@ -793,10 +935,10 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p210.jpg",
       "map": {
-        "x": 33.99,
-        "y": 4.68
+        "x": 82.72,
+        "y": 4.99
       },
-      "northOffset": -179.8,
+      "northOffset": 0.0,
       "links": [
         {
           "to": "p212"
@@ -810,10 +952,10 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p212.jpg",
       "map": {
-        "x": 20.56,
-        "y": 4.31
+        "x": 89.92,
+        "y": 5.21
       },
-      "northOffset": 179.8,
+      "northOffset": -0.3,
       "links": [
         {
           "to": "p220"
@@ -830,10 +972,10 @@ window.TOUR = {
       "description": "ลานโล่งหน้าทางเข้าหอพุทธศิลป์",
       "image": "images/panoramas/p215.jpg",
       "map": {
-        "x": 9.25,
-        "y": 16.21
+        "x": 96.0,
+        "y": -1.15
       },
-      "northOffset": -177.5,
+      "northOffset": 2.3,
       "links": [
         {
           "to": "p220"
@@ -847,10 +989,10 @@ window.TOUR = {
       "description": "ประตูทางเข้าหอพุทธศิลป์ มจร วิทยาเขตแพร่",
       "image": "images/panoramas/p220.jpg",
       "map": {
-        "x": 10.6,
-        "y": 4.0
+        "x": 95.26,
+        "y": 5.39
       },
-      "northOffset": 166.6,
+      "northOffset": -13.6,
       "links": [],
       "infos": []
     }

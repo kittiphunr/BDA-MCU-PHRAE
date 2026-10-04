@@ -40,6 +40,7 @@
       </div>
     </div>
     <nav class="tools" aria-label="เครื่องมือ">
+      <button id="btn-3d" class="icon-btn btn-3d" title="โมเดล 3 มิติของห้อง" aria-label="โมเดล 3 มิติของห้อง" hidden>3D</button>
       <button id="btn-art" class="icon-btn" title="งานศิลปะทั้งหมด" aria-label="งานศิลปะทั้งหมด">❖</button>
       <button id="btn-list" class="icon-btn" title="รายการจุดชม" aria-label="รายการจุดชม">☰</button>
       <button id="btn-map" class="icon-btn" title="แผนผัง" aria-label="แผนผัง">◎</button>
@@ -114,10 +115,27 @@
     </div>
   </section>
 
+  <!-- โมเดล 3 มิติ (dollhouse) -->
+  <section id="model3d" class="model3d" hidden aria-label="โมเดล 3 มิติของหอพุทธศิลป์">
+    <div id="model3d-canvas" class="model3d-canvas"></div>
+    <header class="model3d-head">
+      <div>
+        <h2>โมเดล 3 มิติ หอพุทธศิลป์</h2>
+        <p>ลากเพื่อหมุน · เลื่อน/บีบเพื่อซูม · คลิก <span class="dot"></span> เพื่อเข้าชมจุดนั้น · คลิก <span class="gem">◆</span> เพื่ออ่านข้อมูลงานศิลปะ</p>
+      </div>
+      <button id="model3d-close" class="icon-btn" aria-label="ปิดโมเดล 3 มิติ">×</button>
+    </header>
+    <p class="model3d-note">แบบจำลองโดยประมาณ สร้างจากภาพ 360° และขนาดห้องที่วัดจากภาพ</p>
+    <p id="model3d-status" class="model3d-status" hidden>กำลังสร้างโมเดล 3 มิติ…</p>
+  </section>
+  <div id="model3d-tip" class="model3d-tip" hidden></div>
+
   <div id="toast" class="toast" role="status"></div>
 
   <script src="vendor/pannellum/pannellum.js"></script>
   <script src="data/tour.js"></script>
   <script src="js/app.js"></script>
+  <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js" } }</script>
+  <script type="module" src="js/model3d.js"></script>
 </body>
 </html>
