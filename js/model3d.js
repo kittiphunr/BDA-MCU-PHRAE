@@ -22,19 +22,20 @@ function w(x, y) { return [x * S, y * S]; }      // พิกัดแผนผ�
 function projectedMaterial(atlas, roomIndex) {
   const cams = T.scenes.filter((s) => M.atlas.cells[s.id]);
   const n = cams.length;
-  const camPos = [], camNorth = [], camCell = [], camRoom = [];
+  const camPos = [], camNorth = [], camCell = [], camRoom = [], camMirror = [];
   cams.forEach((s) => {
     const [x, z] = w(s.map.x, s.map.y);
     camPos.push(new THREE.Vector3(x, 1, z));
     camNorth.push(s.northOffset);
     camCell.push(new THREE.Vector2(...M.atlas.cells[s.id]));
     camRoom.push(roomOf(s));
+    camMirror.push(s.mirror ? 1 : 0);
   });
   return new THREE.ShaderMaterial({
     uniforms: {
       atlas: { value: atlas },
       camPos: { value: camPos }, camNorth: { value: camNorth },
-      camCell: { value: camCell }, camRoom: { value: camRoom },
+      camCell: { value: camCell }, camRoom: { value: camRoom }, camMirror: { value: camMirror },
       room: { value: roomIndex },
       grid: { value: new THREE.Vector2(M.atlas.cols, M.atlas.rows) },
       dim: { value: 1.0 },
@@ -53,13 +54,15 @@ function projectedMaterial(atlas, roomIndex) {
       uniform float camNorth[N];
       uniform vec2 camCell[N];
       uniform float camRoom[N];
+      uniform float camMirror[N];
       uniform float room;
       uniform vec2 grid;
       uniform float dim;
       varying vec3 vW;
       vec3 sampleCam(int i) {
         vec3 d = vW - camPos[i];
-        float yaw = degrees(atan(d.x, -d.z)) + camNorth[i];
+        float b = degrees(atan(d.x, -d.z));
+        float yaw = camMirror[i] > 0.5 ? camNorth[i] - b : b + camNorth[i];
         float pitch = degrees(atan(d.y, length(d.xz)));
         float u = fract((yaw + 180.0) / 360.0);
         float v = clamp((90.0 - pitch) / 180.0, 0.002, 0.998);
@@ -156,7 +159,7 @@ function hitRoom(s, yaw, pitch) {
   const r = M.rooms[roomOf(s)];
   const [x0, z0] = w(r.x, r.y), [x1, z1] = w(r.x + r.w, r.y + r.h);
   const [cx, cz] = w(s.map.x, s.map.y);
-  const b = THREE.MathUtils.degToRad(yaw - s.northOffset), p = THREE.MathUtils.degToRad(pitch);
+  const b = THREE.MathUtils.degToRad(s.mirror ? s.northOffset - yaw : yaw - s.northOffset), p = THREE.MathUtils.degToRad(pitch);
   const d = new THREE.Vector3(Math.cos(p) * Math.sin(b), Math.sin(p), -Math.cos(p) * Math.cos(b));
   const o = new THREE.Vector3(cx, 1, cz);
   let t = Infinity;
