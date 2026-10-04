@@ -7,6 +7,7 @@
 deploy/
 ├── build.sh              รวมไฟล์ที่เว็บต้องใช้ลง dist/ + ทำไฟล์ zip
 ├── upload.sh             build แล้วอัปโหลดขึ้น VPS ผ่าน SSH (rsync)
+├── check-dist.sh         ตรวจว่า dist/ ตรงกับไฟล์ต้นฉบับ (ลืม build หรือไม่)
 ├── nginx/bda-360.conf    ตั้งค่า Nginx สำหรับ VPS
 ├── apache/.htaccess      ตั้งค่า Apache / cPanel (ใส่ใน dist/ ให้อัตโนมัติ)
 ├── docker/               Dockerfile + docker-compose.yml (nginx)
@@ -18,6 +19,9 @@ deploy/
 > `deploy/dist/` มีไฟล์พร้อมใช้อยู่ใน repo แล้ว — อัปโหลดโฟลเดอร์นี้ได้ทันทีโดยไม่ต้อง build
 > **เมื่อแก้เว็บ (index.html, css, js, data, ภาพ) ต้องรัน build.sh ใหม่แล้ว commit `deploy/dist/` ด้วย**
 > ไม่เช่นนั้นไฟล์ใน dist จะเป็นเวอร์ชันเก่า
+>
+> ตรวจเองได้ด้วย `bash deploy/check-dist.sh` และ GitHub Actions (`Check deploy/dist`) จะตรวจให้อัตโนมัติ
+> ทุก PR และทุก push เข้า `main` — ถ้าขึ้น ✗ ให้รัน `bash deploy/build.sh` แล้ว commit `deploy/dist/`
 
 ```bash
 bash deploy/build.sh
