@@ -1,0 +1,14 @@
+# ตรวจว่า deploy/dist/ ถูกสร้างใหม่ (bash deploy/build.sh) หลังแก้เว็บ
+name: Check deploy/dist
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check-dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash deploy/check-dist.sh
