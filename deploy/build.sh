@@ -12,7 +12,7 @@ mkdir -p "$DIST/images" "$DIST/vendor"
 
 cp "$ROOT/index.html" "$ROOT/.nojekyll" "$DIST/"
 cp -r "$ROOT/css" "$ROOT/js" "$ROOT/data" "$DIST/"
-cp -r "$ROOT/images/panoramas" "$DIST/images/"
+cp -r "$ROOT/images/panoramas" "$ROOT/images/artworks" "$DIST/images/"
 cp -r "$ROOT/vendor/pannellum" "$DIST/vendor/"
 [ -f "$ROOT/images/floorplan.png" ] && cp "$ROOT/images/floorplan.png" "$DIST/images/"
 
