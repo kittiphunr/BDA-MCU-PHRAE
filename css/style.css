@@ -121,12 +121,12 @@ button { font: inherit; color: inherit; }
 #map-svg { display: block; width: 100%; height: auto; aspect-ratio: 1; padding: 0 8px 8px; }
 #map-svg .room { fill: rgba(212, 175, 55, 0.07); stroke: rgba(212, 175, 55, 0.4); stroke-width: .4; }
 #map-svg .room-label { fill: var(--muted); font-size: 3.2px; text-anchor: middle; font-family: var(--font); }
-#map-svg .path { stroke: var(--gold); stroke-width: .8; stroke-dasharray: 1.6 1.2; opacity: .8; }
+#map-svg .path { stroke: var(--gold); stroke-width: .55; opacity: .6; }
 #map-svg .cone path { fill: rgba(241, 217, 138, 0.35); stroke: none; }
 #map-svg .node { cursor: pointer; }
-#map-svg .node circle { fill: #2a1a10; stroke: var(--gold); stroke-width: .8; transition: r .2s; }
+#map-svg .node circle { fill: #2a1a10; stroke: var(--gold); stroke-width: .45; transition: r .2s; }
 #map-svg .node:hover circle, #map-svg .node:focus circle { fill: var(--gold); outline: none; }
-#map-svg .node.current circle { fill: var(--gold-soft); stroke: #fff; stroke-width: .9; }
+#map-svg .node.current circle { fill: var(--gold-soft); stroke: #fff; stroke-width: .6; }
 
 .scene-list {
   left: 16px;
