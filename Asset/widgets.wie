@@ -1,0 +1,70 @@
+{
+  "sidebar-1": {
+    "search-2": {
+      "title": ""
+    },
+    "recent-posts-2": {
+      "title": "",
+      "number": 5
+    },
+    "recent-comments-2": {
+      "title": "",
+      "number": 5
+    },
+    "archives-2": {
+      "title": "",
+      "count": 0,
+      "dropdown": 0
+    },
+    "categories-2": {
+      "title": "",
+      "count": 0,
+      "hierarchical": 0,
+      "dropdown": 0
+    },
+    "meta-2": {
+      "title": ""
+    }
+  },
+  "slide-out-widget": {
+    "recent-posts-widget-with-thumbnails-2": {
+      "title": "Recent Posts",
+      "default_url": "",
+      "thumb_dimensions": "custom",
+      "category_ids": [
+        0
+      ],
+      "excerpt_length": 55,
+      "number_posts": 5,
+      "post_title_length": 1000,
+      "thumb_height": 30,
+      "thumb_width": 30,
+      "hide_current_post": false,
+      "hide_sticky_posts": false,
+      "hide_title": false,
+      "keep_aspect_ratio": false,
+      "keep_sticky": false,
+      "only_1st_img": false,
+      "random_order": false,
+      "show_author": false,
+      "show_categories": false,
+      "show_comments_number": false,
+      "show_date": false,
+      "show_excerpt": false,
+      "ignore_excerpt": false,
+      "set_more_as_link": false,
+      "try_1st_img": false,
+      "use_default": false,
+      "open_new_window": false,
+      "print_post_categories": false,
+      "set_cats_as_links": false,
+      "show_thumb": true,
+      "excerpt_more": " […]",
+      "category_label": "In"
+    },
+    "nav_menu-2": {
+      "title": "Follow Me",
+      "nav_menu": 4
+    }
+  }
+}
