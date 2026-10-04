@@ -1,0 +1,847 @@
+[
+ {
+  "id": "a01",
+  "card_no": 1,
+  "title": "ภาพประดิษฐ์สื่อผสม “สายลมแห่งโลกธรรม”",
+  "title_en": "Painting",
+  "placements": [
+   {
+    "pano": "158",
+    "yaw": -91.9,
+    "pitch": 3.0,
+    "source": "auto",
+    "inliers": 171
+   },
+   {
+    "pano": "177",
+    "yaw": -108.2,
+    "pitch": 2.8,
+    "source": "auto",
+    "inliers": 137
+   },
+   {
+    "pano": "148",
+    "yaw": 27.9,
+    "pitch": 2.1,
+    "source": "auto",
+    "inliers": 124
+   }
+  ]
+ },
+ {
+  "id": "a02",
+  "card_no": 2,
+  "title": "ภาพวาดสีน้ำมัน “ท่ามกลางความสงบในอนธกาล”",
+  "title_en": "Painting",
+  "placements": [
+   {
+    "pano": "145",
+    "yaw": -0.5,
+    "pitch": -21.1,
+    "source": "auto",
+    "inliers": 363
+   },
+   {
+    "pano": "172",
+    "yaw": 133.4,
+    "pitch": -13.4,
+    "source": "auto",
+    "inliers": 113
+   },
+   {
+    "pano": "158",
+    "yaw": -115.3,
+    "pitch": -6.5,
+    "source": "auto",
+    "inliers": 93
+   }
+  ]
+ },
+ {
+  "id": "a03",
+  "card_no": 3,
+  "title": "ภาพประดิษฐ์ “ตุงผ้าทอสายใยผูกพัน”",
+  "title_en": "Drawing Image – woven tung",
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": 60.3,
+    "pitch": -16.8,
+    "source": "auto",
+    "inliers": 279
+   },
+   {
+    "pano": "050",
+    "yaw": 73.2,
+    "pitch": -9.5,
+    "source": "auto",
+    "inliers": 278
+   },
+   {
+    "pano": "048",
+    "yaw": 89.4,
+    "pitch": -5.9,
+    "source": "auto",
+    "inliers": 47
+   }
+  ]
+ },
+ {
+  "id": "a04",
+  "card_no": 4,
+  "title": "ตุง ภาพประดิษฐ์ “ตุงวิถีวัฒนธรรมล้านนา”",
+  "title_en": "Lanna cultural in Tung",
+  "placements": [
+   {
+    "pano": "080",
+    "yaw": -61.7,
+    "pitch": 2.6,
+    "source": "auto",
+    "inliers": 159
+   },
+   {
+    "pano": "072",
+    "yaw": -102.2,
+    "pitch": 2.8,
+    "source": "auto",
+    "inliers": 98
+   },
+   {
+    "pano": "060",
+    "yaw": -142.9,
+    "pitch": 2.3,
+    "source": "auto",
+    "inliers": 66
+   }
+  ]
+ },
+ {
+  "id": "a05",
+  "card_no": 5,
+  "title": "ภาพประดิษฐ์ “พระกาฬ”",
+  "title_en": "",
+  "placements": [
+   {
+    "pano": "093",
+    "yaw": -155.1,
+    "pitch": 0.9,
+    "source": "auto",
+    "inliers": 142
+   },
+   {
+    "pano": "080",
+    "yaw": -107.6,
+    "pitch": 0.9,
+    "source": "auto",
+    "inliers": 117
+   }
+  ]
+ },
+ {
+  "id": "a06",
+  "card_no": 6,
+  "title": "ภาพประดิษฐ์ “ตุงสื่อชีวิตและจิตวิญญาณ”",
+  "title_en": "life and spiritual in Tung",
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": -149.5,
+    "pitch": -3.0,
+    "source": "auto",
+    "inliers": 294
+   },
+   {
+    "pano": "093",
+    "yaw": 173.9,
+    "pitch": -2.8,
+    "source": "auto",
+    "inliers": 183
+   },
+   {
+    "pano": "098",
+    "yaw": 177.2,
+    "pitch": -9.2,
+    "source": "auto",
+    "inliers": 161
+   }
+  ]
+ },
+ {
+  "id": "a07",
+  "card_no": 7,
+  "title": "ภาพประดิษฐ์ “มนตราแห่งเลขยันต์”",
+  "title_en": "Artificial image “Montra of the number”",
+  "placements": [
+   {
+    "pano": "151",
+    "yaw": -140.8,
+    "pitch": -3.4,
+    "source": "auto",
+    "inliers": 188
+   },
+   {
+    "pano": "148",
+    "yaw": -159.0,
+    "pitch": -2.6,
+    "source": "auto",
+    "inliers": 187
+   },
+   {
+    "pano": "130",
+    "yaw": -164.5,
+    "pitch": -4.5,
+    "source": "auto",
+    "inliers": 170
+   }
+  ]
+ },
+ {
+  "id": "a08",
+  "card_no": 8,
+  "title": "เครื่องสูงบูชาพระเจ้าห้าพระองค์",
+  "title_en": "The Highest Worshiping",
+  "placements": []
+ },
+ {
+  "id": "a09",
+  "card_no": 9,
+  "title": "ไส้เทียนบูชาพระ",
+  "title_en": "Candlewick",
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": -40,
+    "pitch": -15,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a10",
+  "card_no": 10,
+  "title": "แผ่นยันต์",
+  "title_en": "talisman or fabric",
+  "placements": [
+   {
+    "pano": "096",
+    "yaw": 100,
+    "pitch": -15,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a11",
+  "card_no": 11,
+  "title": "สมุดข่อย",
+  "title_en": "Note Book",
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": 12,
+    "pitch": -15,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a12",
+  "card_no": 12,
+  "title": "พระประจำวันเกิดวันอังคารปางไสยาสน์",
+  "title_en": "Tuesday Buddha Image",
+  "placements": [
+   {
+    "pano": "145",
+    "yaw": -169,
+    "pitch": -11,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a13",
+  "card_no": 13,
+  "title": "พระพุทธรูปปางมารวิชัย",
+  "title_en": "Maravichaya Buddha Image Style",
+  "placements": []
+ },
+ {
+  "id": "a14",
+  "card_no": 14,
+  "title": "พระธาตุช่อแฮจำลอง",
+  "title_en": "Chohae Pagoda Model",
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": 37,
+    "pitch": -11,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a15",
+  "card_no": 15,
+  "title": "พระพุทธรูปปางมารวิชัย",
+  "title_en": "Maravichaya Buddha Image Style",
+  "placements": []
+ },
+ {
+  "id": "a16",
+  "card_no": 16,
+  "title": "พระพุทธรูปปางมารวิชัย",
+  "title_en": "Maravichaya Buddha Image Style",
+  "placements": []
+ },
+ {
+  "id": "a17",
+  "card_no": 17,
+  "title": "พระพุทธรูปปางมารวิชัย",
+  "title_en": "Maravichaya Buddha Image Style",
+  "placements": []
+ },
+ {
+  "id": "a18",
+  "card_no": 18,
+  "title": "พระประจำวันเกิดวันอาทิตย์ปางถวายเนตรแกะสลักไม้",
+  "title_en": "Saturday Wooden Buddha Image",
+  "placements": []
+ },
+ {
+  "id": "a19",
+  "card_no": 19,
+  "title": "พระพุทธรูปปางห้ามแก่นจันทร์",
+  "title_en": "Buddha Image",
+  "placements": []
+ },
+ {
+  "id": "a20",
+  "card_no": 20,
+  "title": "พระประจำวันเกิดวันพุธ กลางวัน พระปางอุ้มบาตร",
+  "title_en": "Wednesday Buddha Image",
+  "placements": []
+ },
+ {
+  "id": "a21",
+  "card_no": 21,
+  "title": "พระประจำวันเกิดวันเสาร์ พระปางนาคปรก",
+  "title_en": "Saturday Buddha Image",
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": 45,
+    "pitch": -2,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a22",
+  "card_no": 22,
+  "title": "พระพุทธรูปประจำวันเกิดวันพฤหัสบดี พระปางตรัสรู้หรือปางสมาธิ",
+  "title_en": "Thursday Buddha Image",
+  "placements": [
+   {
+    "pano": "136",
+    "yaw": -173.7,
+    "pitch": -16.9,
+    "source": "auto",
+    "inliers": 91
+   }
+  ]
+ },
+ {
+  "id": "a23",
+  "card_no": 23,
+  "title": "พระประจำวันเกิดวันศุกร์ พระปางรำพึง",
+  "title_en": "Friday Buddha Image",
+  "placements": [
+   {
+    "pano": "143",
+    "yaw": 177.3,
+    "pitch": -6.8,
+    "source": "auto",
+    "inliers": 36
+   }
+  ]
+ },
+ {
+  "id": "a24",
+  "card_no": 24,
+  "title": "พระประจำวันเกิดวันพุธ (ราหู) ปางป่าเลไลย์",
+  "title_en": "Wednesday Night Buddha Image (Sitting Style)",
+  "placements": []
+ },
+ {
+  "id": "a25",
+  "card_no": 25,
+  "title": "พระประจำวันเกิดวันพุธกลางคืน",
+  "title_en": "Wednesday Night Buddha Image (Sitting Style)",
+  "placements": []
+ },
+ {
+  "id": "a26",
+  "card_no": 26,
+  "title": "สุ่มดอกล้านนา",
+  "title_en": "Lanna flower Bowl",
+  "placements": []
+ },
+ {
+  "id": "a27",
+  "card_no": 27,
+  "title": "ก้างธรรม",
+  "title_en": "Dhamma Script Hanger",
+  "placements": []
+ },
+ {
+  "id": "a28",
+  "card_no": 28,
+  "title": "ปั๊บสา (สมุดข่อย)",
+  "title_en": "Note Book",
+  "placements": []
+ },
+ {
+  "id": "a29",
+  "card_no": 29,
+  "title": "หม้อดินเผา",
+  "title_en": "Clay pot",
+  "placements": []
+ },
+ {
+  "id": "a30",
+  "card_no": 30,
+  "title": "รูปปั้นหรือรูปหล่อพิมพ์เกจิอาจารย์",
+  "title_en": "Simulate of Monks",
+  "placements": []
+ },
+ {
+  "id": "a31",
+  "card_no": 31,
+  "title": "เจดีย์จำลอง",
+  "title_en": "Simulate Pagoda",
+  "placements": []
+ },
+ {
+  "id": "a32",
+  "card_no": 32,
+  "title": "พระเจ้าศรีมหาโพธิ์",
+  "title_en": "Sri Maha Pho Buddha Image",
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": -61,
+    "pitch": -7,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a33",
+  "card_no": 33,
+  "title": "เครื่องปั่นฝ้าย",
+  "title_en": "Cotton Jin",
+  "placements": [
+   {
+    "pano": "060",
+    "yaw": -25,
+    "pitch": -3,
+    "source": "manual"
+   },
+   {
+    "pano": "057",
+    "yaw": -63,
+    "pitch": -6,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a34",
+  "card_no": 34,
+  "title": "เปียทอผ้า",
+  "title_en": "Braid weaving",
+  "placements": []
+ },
+ {
+  "id": "a35",
+  "card_no": 35,
+  "title": "ฟืมทอผ้า",
+  "title_en": "Feum weaving",
+  "placements": []
+ },
+ {
+  "id": "a36",
+  "card_no": 36,
+  "title": "เครื่องเสียงโบราณและแผ่นเสียง",
+  "title_en": "Antique audio and Recording plate",
+  "placements": []
+ },
+ {
+  "id": "a37",
+  "card_no": 37,
+  "title": "ฮอก",
+  "title_en": "Wooden bell",
+  "placements": []
+ },
+ {
+  "id": "a38",
+  "card_no": 38,
+  "title": "ขันพานทองเหลือง",
+  "title_en": "Brass bowl",
+  "placements": []
+ },
+ {
+  "id": "a39",
+  "card_no": 39,
+  "title": "ขันพานทองเหลือง",
+  "title_en": "Brass bowl",
+  "placements": []
+ },
+ {
+  "id": "a40",
+  "card_no": 40,
+  "title": "ตลับเมตรโบราณ",
+  "title_en": "Antique meter",
+  "placements": []
+ },
+ {
+  "id": "a41",
+  "card_no": 41,
+  "title": "กระบอกชงชา",
+  "title_en": "Tea maker",
+  "placements": []
+ },
+ {
+  "id": "a42",
+  "card_no": 42,
+  "title": "ถาดทองเหลืองก้นลึก",
+  "title_en": "Brass tray",
+  "placements": []
+ },
+ {
+  "id": "a43",
+  "card_no": 43,
+  "title": "ครอบกำยาน",
+  "title_en": "frankincense Covering",
+  "placements": []
+ },
+ {
+  "id": "a44",
+  "card_no": 44,
+  "title": "เด็งหรือกระดิ่ง",
+  "title_en": "Bell",
+  "placements": []
+ },
+ {
+  "id": "a45",
+  "card_no": 45,
+  "title": "ขันหมากและเครื่องเขินล้านนา",
+  "title_en": "Lanna Lacquer ware",
+  "placements": []
+ },
+ {
+  "id": "a46",
+  "card_no": 46,
+  "title": "ขันหมากและเครื่องเขินล้านนา",
+  "title_en": "Lanna Lacquer ware",
+  "placements": []
+ },
+ {
+  "id": "a47",
+  "card_no": 47,
+  "title": "ขันหมากและเครื่องเขินล้านนา",
+  "title_en": "Lanna Lacquer ware",
+  "placements": []
+ },
+ {
+  "id": "a48",
+  "card_no": 48,
+  "title": "ขันหมากและเครื่องเขินล้านนา",
+  "title_en": "Lanna Lacquer ware",
+  "placements": []
+ },
+ {
+  "id": "a49",
+  "card_no": 49,
+  "title": "ทองเหลือง",
+  "title_en": "Brass bowl",
+  "placements": []
+ },
+ {
+  "id": "a50",
+  "card_no": 50,
+  "title": "น้ำถุ้ง",
+  "title_en": "Water Scoop",
+  "placements": []
+ },
+ {
+  "id": "a51",
+  "card_no": 51,
+  "title": "หมอนไม้ หรือ หมอนนมสาว",
+  "title_en": "Wooden Pillow",
+  "placements": []
+ },
+ {
+  "id": "a52",
+  "card_no": 52,
+  "title": "ถาดร่อนทองคำ",
+  "title_en": "Gold pan tray",
+  "placements": []
+ },
+ {
+  "id": "a53",
+  "card_no": 53,
+  "title": "แร้วคอม้า (กับดักคอม้า)",
+  "title_en": "Horse Snare",
+  "placements": []
+ },
+ {
+  "id": "a54",
+  "card_no": 54,
+  "title": "ม้าหั่นใบยาสูบ",
+  "title_en": "tobacco turning",
+  "placements": []
+ },
+ {
+  "id": "a55",
+  "card_no": 55,
+  "title": "หีบเหล็กโบราณ",
+  "title_en": "Ancient iron chest",
+  "placements": [
+   {
+    "pano": "060",
+    "yaw": -86,
+    "pitch": -13,
+    "source": "manual"
+   },
+   {
+    "pano": "039",
+    "yaw": -148,
+    "pitch": -19,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a56",
+  "card_no": 56,
+  "title": "ขันโตกแบน",
+  "title_en": "Khantoke",
+  "placements": [
+   {
+    "pano": "057",
+    "yaw": 32,
+    "pitch": -26,
+    "source": "manual"
+   },
+   {
+    "pano": "060",
+    "yaw": 59,
+    "pitch": -17,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a57",
+  "card_no": 57,
+  "title": "ขันหมากเครื่องเขินล้านนา",
+  "title_en": "Lanna Lacquer ware",
+  "placements": []
+ },
+ {
+  "id": "a58",
+  "card_no": 58,
+  "title": "รูปปั้นพระมหาโพธิวงศาจารย์",
+  "title_en": "Phramaha Bhodhiwongsajarn Statue",
+  "placements": [
+   {
+    "pano": "072",
+    "yaw": -5,
+    "pitch": 2,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a59",
+  "card_no": 59,
+  "title": "เครื่องเคลือบดินเผา",
+  "title_en": "Porcelain",
+  "placements": []
+ },
+ {
+  "id": "a60",
+  "card_no": 60,
+  "title": "พระบูชา",
+  "title_en": "Worshiping Buddha image",
+  "placements": []
+ },
+ {
+  "id": "a61",
+  "card_no": 61,
+  "title": "เครื่องสูงบูชาพระเจ้าห้าพระองค์",
+  "title_en": "The Highest for Buja",
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": 164,
+    "pitch": -2,
+    "source": "manual"
+   },
+   {
+    "pano": "096",
+    "yaw": 152,
+    "pitch": -8,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a62",
+  "card_no": 62,
+  "title": "ตู้พระไตรปิฎก",
+  "title_en": "the tripitaka cabinet",
+  "placements": [
+   {
+    "pano": "158",
+    "yaw": 124,
+    "pitch": -5,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a63",
+  "card_no": 63,
+  "title": "ธรรมาสน์",
+  "title_en": "seat of sermon, sermon seat",
+  "placements": [
+   {
+    "pano": "158",
+    "yaw": 65,
+    "pitch": -8,
+    "source": "manual"
+   },
+   {
+    "pano": "177",
+    "yaw": 90,
+    "pitch": -8,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a64",
+  "card_no": 64,
+  "title": "ธรรมาสน์",
+  "title_en": "seat of sermon, sermon seat",
+  "placements": [
+   {
+    "pano": "158",
+    "yaw": 94,
+    "pitch": -8,
+    "source": "manual"
+   },
+   {
+    "pano": "177",
+    "yaw": 122,
+    "pitch": -8,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a65",
+  "card_no": 65,
+  "title": "เจดีย์บรรจุพระสารีริกธาตุ",
+  "title_en": "The stupa of relic of The Lord Buddha",
+  "placements": [
+   {
+    "pano": "151",
+    "yaw": 59,
+    "pitch": -14,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a66",
+  "card_no": 66,
+  "title": "พระพุทธรูปปูนปั้น (พระเจ้าทันใจ)",
+  "title_en": "Stucco Buddha statue (Instant God)",
+  "placements": []
+ },
+ {
+  "id": "a67",
+  "card_no": 67,
+  "title": "ปูรณฆฏะ หรือ กุมภะ",
+  "title_en": "Puranakata or Kumar",
+  "placements": [
+   {
+    "pano": "183",
+    "yaw": -178.8,
+    "pitch": -1.2,
+    "source": "auto",
+    "inliers": 42
+   },
+   {
+    "pano": "189",
+    "yaw": -175.3,
+    "pitch": -0.2,
+    "source": "auto",
+    "inliers": 32
+   }
+  ]
+ },
+ {
+  "id": "a68",
+  "card_no": 68,
+  "title": "อูปยอด",
+  "title_en": "Upp",
+  "placements": [
+   {
+    "pano": "177",
+    "yaw": 53,
+    "pitch": -24,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a69",
+  "card_no": 69,
+  "title": "เครื่องสูงประกอบยศ",
+  "title_en": "High-ranking decoration",
+  "placements": [
+   {
+    "pano": "183",
+    "yaw": -110,
+    "pitch": 5,
+    "source": "manual"
+   }
+  ]
+ },
+ {
+  "id": "a70",
+  "card_no": 70,
+  "title": "พระแผงเนื้อดิน",
+  "title_en": "The Soil Buddha Image in Panel Board",
+  "placements": [
+   {
+    "pano": "194",
+    "yaw": 92.4,
+    "pitch": -4.6,
+    "source": "auto",
+    "inliers": 30
+   },
+   {
+    "pano": "148",
+    "yaw": 72.4,
+    "pitch": -1.6,
+    "source": "auto",
+    "inliers": 22
+   }
+  ]
+ }
+]
