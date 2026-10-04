@@ -227,10 +227,73 @@
   /* กล่องข้อมูล */
   function showInfo(info) {
     $("info-title").textContent = info.title;
+    $("info-sub").textContent = info.subtitle || "";
     $("info-text").textContent = info.text || "";
+    var link = $("info-link");
+    link.hidden = !info.card;
+    if (info.card) {
+      link.href = info.card;
+      $("info-img").src = info.card;
+      $("info-img").alt = "ป้ายข้อมูล " + info.title;
+    }
+    var art = info.artwork && artById[info.artwork];
+    var where = art && art.placements.length ? art.placements.map(function (p) {
+      return byId["p" + p.pano] ? byId["p" + p.pano].title : "";
+    }).filter(function (t, i, a) { return t && a.indexOf(t) === i; }) : [];
+    $("info-where").textContent = where.length ? "พบได้ที่: " + where.join(", ") : "";
     $("info-card").hidden = false;
   }
   function hideInfo() { $("info-card").hidden = true; }
+
+  /* งานศิลปะ */
+  var ARTS = TOUR.artworks || [];
+  var artById = {};
+  ARTS.forEach(function (a) { artById[a.id] = a; });
+  var pendingInfo = null;
+
+  function artInfo(a) {
+    return { title: a.title, subtitle: a.title_en, card: a.card, artwork: a.id };
+  }
+
+  // ไปยังภาพ 360° ที่เห็นงานชิ้นนี้ชัดที่สุด หันกล้องไปที่วัตถุ แล้วเปิดข้อมูล
+  function openArtwork(a) {
+    var p = a.placements[0];
+    if (!p) { showInfo(artInfo(a)); return; }
+    var id = "p" + p.pano;
+    if (viewer.getScene() === id) {
+      viewer.lookAt(p.pitch, p.yaw, 70, 800);
+      showInfo(artInfo(a));
+    } else {
+      pendingInfo = artInfo(a);
+      viewer.loadScene(id, p.pitch, p.yaw, 70);
+    }
+  }
+
+  var artList = $("art-items");
+  ARTS.forEach(function (a) {
+    var li = document.createElement("li");
+    var b = document.createElement("button");
+    b.innerHTML = '<span class="num"></span><span class="t"><span class="th"></span><small class="en"></small></span>';
+    b.querySelector(".num").textContent = a.card_no;
+    b.querySelector(".th").textContent = a.title;
+    b.querySelector(".en").textContent = a.title_en || "";
+    if (!a.placements.length) b.classList.add("no-place");
+    b.addEventListener("click", function () {
+      openArtwork(a);
+      if (window.matchMedia("(max-width: 720px)").matches) togglePanel("art-list", false);
+    });
+    li.dataset.q = (a.title + " " + (a.title_en || "") + " " + a.card_no).toLowerCase();
+    li.appendChild(b);
+    artList.appendChild(li);
+  });
+  $("art-count").textContent = ARTS.length ? "(" + ARTS.length + ")" : "";
+  $("art-search").addEventListener("input", function () {
+    var q = this.value.trim().toLowerCase();
+    Array.prototype.forEach.call(artList.children, function (li) {
+      li.hidden = q && li.dataset.q.indexOf(q) < 0;
+    });
+  });
+  if (!ARTS.length) $("btn-art").hidden = true;
 
   /* แผง */
   function togglePanel(id, show) {
@@ -240,7 +303,8 @@
   Array.prototype.forEach.call(document.querySelectorAll("[data-close]"), function (b) {
     b.addEventListener("click", function () { togglePanel(b.dataset.close, false); });
   });
-  $("btn-list").addEventListener("click", function () { togglePanel("scene-list"); });
+  $("btn-list").addEventListener("click", function () { togglePanel("art-list", false); togglePanel("scene-list"); });
+  $("btn-art").addEventListener("click", function () { togglePanel("scene-list", false); togglePanel("art-list"); });
   $("btn-map").addEventListener("click", function () { togglePanel("minimap"); });
   if (window.matchMedia("(max-width: 720px)").matches) togglePanel("minimap", false);
 
@@ -293,13 +357,16 @@
   var mapView = (function () {
     var fp = TOUR.floorPlan || {};
     var pts = TOUR.scenes.filter(function (s) { return s.map; }).map(function (s) { return s.map; });
-    if (fp.image || (fp.rooms && fp.rooms.length) || !pts.length) {
+    (fp.rooms || []).forEach(function (r) {
+      pts.push({ x: r.x, y: r.y }, { x: r.x + r.w, y: r.y + r.h });
+    });
+    if (fp.image || !pts.length) {
       return { x: function (v) { return v; }, y: function (v) { return v; }, h: 100, k: 1 };
     }
     var xs = pts.map(function (p) { return p.x; }), ys = pts.map(function (p) { return p.y; });
     var minX = Math.min.apply(null, xs), minY = Math.min.apply(null, ys);
     var w = Math.max.apply(null, xs) - minX, h = Math.max.apply(null, ys) - minY;
-    var pad = Math.max(w, h) * 0.08 + 1;
+    var pad = Math.max(w, h) * 0.03 + 0.5;
     var k = 100 / (Math.max(w, h * 1.4) + 2 * pad);
     var offX = (100 - w * k) / 2;
     return {
@@ -322,8 +389,8 @@
       el("image", { href: fp.image, x: 0, y: 0, width: 100, height: 100, preserveAspectRatio: "none", opacity: 0.85 }, svg);
     }
     (fp.rooms || []).forEach(function (r) {
-      el("rect", { x: r.x, y: r.y, width: r.w, height: r.h, rx: 1.5, class: "room" }, svg);
-      var t = el("text", { x: r.x + r.w / 2, y: r.y + 4.2, class: "room-label" }, svg);
+      el("rect", { x: X(r.x), y: Y(r.y), width: r.w * mapView.k, height: r.h * mapView.k, rx: 1, class: "room" }, svg);
+      var t = el("text", { x: X(r.x) + 1.2, y: Y(r.y + r.h) - 1.2, class: "room-label" }, svg);
       t.textContent = r.label;
     });
     // เส้นทางเดิน
@@ -402,7 +469,11 @@
   })();
 
   viewer.on("scenechange", function () { lastYaw = null; updateSceneUI(); });
-  viewer.on("load", function () { lastYaw = null; updateSceneUI(); });
+  viewer.on("load", function () {
+    lastYaw = null;
+    updateSceneUI();
+    if (pendingInfo) { showInfo(pendingInfo); pendingInfo = null; }
+  });
 
   /* ---------- หน้าต้อนรับ ---------- */
 
