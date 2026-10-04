@@ -214,6 +214,15 @@ window.TOUR = {
           "card": "images/artworks/a28.jpg"
         },
         {
+          "yaw": 77,
+          "pitch": -12,
+          "artwork": "a39",
+          "title": "ขันพานทองเหลือง",
+          "subtitle": "Brass bowl",
+          "card": "images/artworks/a39.jpg",
+          "approx": true
+        },
+        {
           "yaw": 73,
           "pitch": -12,
           "artwork": "a41",
@@ -285,6 +294,15 @@ window.TOUR = {
           "title": "น้ำถุ้ง",
           "subtitle": "Water Scoop",
           "card": "images/artworks/a50.jpg"
+        },
+        {
+          "yaw": -19,
+          "pitch": -26,
+          "artwork": "a51",
+          "title": "หมอนไม้ หรือ หมอนนมสาว",
+          "subtitle": "Wooden Pillow",
+          "card": "images/artworks/a51.jpg",
+          "approx": true
         },
         {
           "yaw": 27,
@@ -379,6 +397,15 @@ window.TOUR = {
           "card": "images/artworks/a38.jpg"
         },
         {
+          "yaw": -49,
+          "pitch": -17,
+          "artwork": "a40",
+          "title": "ตลับเมตรโบราณ",
+          "subtitle": "Antique meter",
+          "card": "images/artworks/a40.jpg",
+          "approx": true
+        },
+        {
           "yaw": -28,
           "pitch": -23,
           "artwork": "a41",
@@ -409,6 +436,15 @@ window.TOUR = {
           "title": "เด็งหรือกระดิ่ง",
           "subtitle": "Bell",
           "card": "images/artworks/a44.jpg"
+        },
+        {
+          "yaw": -75,
+          "pitch": -7,
+          "artwork": "a46",
+          "title": "ขันหมากและเครื่องเขินล้านนา",
+          "subtitle": "Lanna Lacquer ware",
+          "card": "images/artworks/a46.jpg",
+          "approx": true
         }
       ]
     },
@@ -669,6 +705,14 @@ window.TOUR = {
       ],
       "infos": [
         {
+          "yaw": 152,
+          "pitch": -2,
+          "artwork": "a08",
+          "title": "เครื่องสูงบูชาพระเจ้าห้าพระองค์",
+          "subtitle": "The Highest Worshiping",
+          "card": "images/artworks/a08.jpg"
+        },
+        {
           "yaw": 100,
           "pitch": -15,
           "artwork": "a10",
@@ -737,6 +781,14 @@ window.TOUR = {
           "title": "ภาพประดิษฐ์ “ตุงสื่อชีวิตและจิตวิญญาณ”",
           "subtitle": "life and spiritual in Tung",
           "card": "images/artworks/a06.jpg"
+        },
+        {
+          "yaw": 172,
+          "pitch": 4,
+          "artwork": "a08",
+          "title": "เครื่องสูงบูชาพระเจ้าห้าพระองค์",
+          "subtitle": "The Highest Worshiping",
+          "card": "images/artworks/a08.jpg"
         },
         {
           "yaw": -40,
@@ -1485,7 +1537,18 @@ window.TOUR = {
       "title": "เครื่องสูงบูชาพระเจ้าห้าพระองค์",
       "title_en": "The Highest Worshiping",
       "card": "images/artworks/a08.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "122",
+          "yaw": 172,
+          "pitch": 4
+        },
+        {
+          "pano": "096",
+          "yaw": 152,
+          "pitch": -2
+        }
+      ]
     },
     {
       "id": "a09",
@@ -1923,7 +1986,14 @@ window.TOUR = {
       "title": "ขันพานทองเหลือง",
       "title_en": "Brass bowl",
       "card": "images/artworks/a39.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": 77,
+          "pitch": -12,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a40",
@@ -1931,7 +2001,14 @@ window.TOUR = {
       "title": "ตลับเมตรโบราณ",
       "title_en": "Antique meter",
       "card": "images/artworks/a40.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -49,
+          "pitch": -17,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a41",
@@ -2029,7 +2106,14 @@ window.TOUR = {
       "title": "ขันหมากและเครื่องเขินล้านนา",
       "title_en": "Lanna Lacquer ware",
       "card": "images/artworks/a46.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -75,
+          "pitch": -7,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a47",
@@ -2094,7 +2178,14 @@ window.TOUR = {
       "title": "หมอนไม้ หรือ หมอนนมสาว",
       "title_en": "Wooden Pillow",
       "card": "images/artworks/a51.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": -19,
+          "pitch": -26,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a52",
