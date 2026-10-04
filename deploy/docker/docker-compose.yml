@@ -1,0 +1,9 @@
+services:
+  bda-360:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: bda-360-tour
+    ports:
+      - "8080:80"        # เปิดที่ http://<server>:8080 (แก้ซ้ายเป็น 80 ถ้าต้องการ)
+    restart: unless-stopped
