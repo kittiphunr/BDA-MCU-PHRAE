@@ -215,6 +215,19 @@ def build_atlas(order):
     return {"image": "images/model/atlas.jpg", "cols": ATLAS_COLS, "rows": rows, "cells": cells}
 
 
+# เข็มทิศ: มองออกทางประตูห้องโถง (จาก 194 ไป 195) หันไปทิศตะวันออกเฉียงเหนือ 35° (ข้อมูลจากผู้ดูแล)
+DOOR_AZIMUTH = 35.0
+
+
+def compass(north):
+    """มุมทิศจริง (องศาจากทิศเหนือ ตามเข็มนาฬิกา) ของ "ด้านบนแผนผัง"
+    ทิศประตูบนแผนผัง = yaw ที่วัดได้ใน 194 ไปยัง 195 − northOffset ของ 194"""
+    door_yaw = json.load(open(CACHE))[a_b(DOOR)]["yaw"]
+    door_bearing = solve_map.wrap(door_yaw - north[DOOR[0]])
+    return {"door": "p" + DOOR[0], "doorYaw": round(door_yaw, 1), "doorAzimuth": DOOR_AZIMUTH,
+            "mapUpAzimuth": round((DOOR_AZIMUTH - door_bearing) % 360, 1)}
+
+
 def same_room(a, b):
     corridor = ALL.index("195")
     return (ALL.index(a) >= corridor) == (ALL.index(b) >= corridor) or {a, b} == set(DOOR)
@@ -269,6 +282,15 @@ def main():
     m_scale, hall, corr, shift = geometry.solve(mp, corridor_ids)
     for n in corridor_ids:
         mp[n] = mp[n] + np.array([0.0, shift])
+    # ระเบียงวิ่งขนานและยาวเสมอห้องโถง (ตามที่ผู้ดูแลยืนยัน): เริ่มที่ประตู (195 ตรงกับ 194)
+    # แล้ววิ่งไปตามความยาวห้องจนสุดอีกฝั่ง ภาพระเบียงจึงถูกสะท้อนซ้าย-ขวาบนแผนผัง (mirror)
+    # ทิศลูกศรในภาพ 360° ทุกภาพยังตรงตำแหน่งเดิม เพราะหน้าเว็บแปลงทิศด้วย yaw = northOffset − bearing
+    x0 = mp[DOOR[1]][0]
+    far = max(mp[n][0] - x0 for n in corridor_ids)
+    k = (mp[DOOR[0]][0] - (hall["left"] + 2.0)) / far
+    for n in corridor_ids:
+        mp[n] = np.array([mp[DOOR[0]][0] - (mp[n][0] - x0) * k, mp[n][1]])
+    corr["left"], corr["right"] = hall["left"], hall["right"]
     rooms = []
     for (label, _, _), r in zip(ROOMS, (hall, corr)):
         rooms.append({"label": label, "x": round(r["left"], 2), "y": round(r["top"], 2),
@@ -305,6 +327,7 @@ def main():
             "image": "images/panoramas/p%s.jpg" % n,
             "map": {"x": round(float(mp[n][0]), 2), "y": round(float(mp[n][1]), 2)},
             "northOffset": round(north[n], 1),
+            **({"mirror": True} if n in corridor_ids else {}),
             "links": links[n],
             "infos": infos.get(n, []),
         })
@@ -320,6 +343,7 @@ def main():
         "subtitle": "พิพิธภัณฑ์เสมือนจริง 360° · มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย วิทยาเขตแพร่",
         "firstScene": "p" + FIRST,
         "floorPlan": {"image": None, "rooms": rooms},
+        "compass": compass(north),
         "model": {
             # หน่วย 3 มิติ = ความสูงกล้อง; พิกัด x,y ของแผนผัง × scale = ตำแหน่งบนพื้น
             "scale": round(m_scale, 5),

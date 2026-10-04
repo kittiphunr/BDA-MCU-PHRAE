@@ -26,8 +26,15 @@
   }
 
   // แปลงทิศบนแผนผังเป็น yaw ในภาพของ scene และกลับกัน
-  function bearingToYaw(scene, bearing) { return norm(bearing + (scene.northOffset || 0)); }
-  function yawToBearing(scene, yaw) { return norm(yaw - (scene.northOffset || 0)); }
+  // scene.mirror: ภาพที่วางบนแผนผังแบบสะท้อน (ระเบียง) — ทิศในภาพหมุนกลับด้าน
+  function bearingToYaw(scene, bearing) {
+    var n = scene.northOffset || 0;
+    return norm(scene.mirror ? n - bearing : bearing + n);
+  }
+  function yawToBearing(scene, yaw) {
+    var n = scene.northOffset || 0;
+    return norm(scene.mirror ? n - yaw : yaw - n);
+  }
 
   /* ---------- สร้างกราฟการเชื่อมต่อ (ลิงก์สองทาง) ---------- */
 
@@ -405,6 +412,13 @@
         el("line", { x1: X(s.map.x), y1: Y(s.map.y), x2: X(byId[to].map.x), y2: Y(byId[to].map.y), class: "path" }, svg);
       });
     });
+    // ลูกศรทิศเหนือ
+    if (COMPASS) {
+      var na = el("g", { class: "map-north", transform: "translate(95 " + (mapView.h - 6).toFixed(1) + ") rotate(" + (-COMPASS.mapUpAzimuth) + ")" }, svg);
+      el("path", { d: "M0 -4 L2 2 L0 1 L-2 2 Z" }, na);
+      var nt = el("text", { y: "-5" }, na);
+      nt.textContent = "N";
+    }
     // กรวยทิศที่มอง
     var c = byId[cur];
     if (c && c.map) {
@@ -421,6 +435,35 @@
       title.textContent = s.title;
       g.addEventListener("click", function () { goTo(s.id); });
       g.addEventListener("keydown", function (e) { if (e.key === "Enter") goTo(s.id); });
+    });
+  }
+
+  /* ---------- เข็มทิศ ---------- */
+
+  var COMPASS = TOUR.compass;
+  var DIRS = ["เหนือ", "ตะวันออกเฉียงเหนือ", "ตะวันออก", "ตะวันออกเฉียงใต้",
+              "ใต้", "ตะวันตกเฉียงใต้", "ตะวันตก", "ตะวันตกเฉียงเหนือ"];
+  var DIRS_EN = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
+  // มุมทิศจริงของทิศที่กำลังมอง (0 = เหนือ, ตามเข็มนาฬิกา)
+  function azimuth(s, yaw) {
+    return ((yawToBearing(s, yaw) + COMPASS.mapUpAzimuth) % 360 + 360) % 360;
+  }
+
+  function updateCompass() {
+    var s = currentScene();
+    if (!COMPASS || !s) return;
+    var a = azimuth(s, viewer.getYaw());
+    var i = Math.round(a / 45) % 8;
+    $("compass-rose").setAttribute("transform", "rotate(" + (-a).toFixed(1) + ")");
+    $("compass-text").textContent = DIRS_EN[i] + " " + Math.round(a) + "° · " + DIRS[i];
+  }
+
+  if (COMPASS) {
+    $("compass").hidden = false;
+    $("compass").addEventListener("click", function () {
+      var s = currentScene();
+      if (s) viewer.setYaw(bearingToYaw(s, -COMPASS.mapUpAzimuth), 800);
     });
   }
 
@@ -463,6 +506,7 @@
       if (y !== lastYaw) {
         lastYaw = y;
         updateCone();
+        updateCompass();
         updateForwardButton();
         editHud();
       }
@@ -478,7 +522,7 @@
   });
 
   // ให้โมเดล 3 มิติ (js/model3d.js) สั่งเดินไปยังจุด / เปิดงานศิลปะได้
-  window.TourApp = { goTo: goTo, openArtwork: openArtwork, currentScene: currentScene };
+  window.TourApp = { goTo: goTo, openArtwork: openArtwork, currentScene: currentScene, compass: COMPASS };
 
   /* ---------- หน้าโหลด (preloader) ---------- */
 
