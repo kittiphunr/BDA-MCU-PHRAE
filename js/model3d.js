@@ -188,6 +188,24 @@ function addArtworks() {
   });
 }
 
+// ลูกศรทิศเหนือบนพื้น ข้างมุมห้อง (ตามเข็มทิศใน data/tour.js)
+function addNorth() {
+  const C = T.compass;
+  if (!C) return;
+  const r = M.rooms[0];
+  const [x0, z0] = w(r.x, r.y), [, z1] = w(r.x + r.w, r.y + r.h);
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 0.9); shape.lineTo(0.35, -0.5); shape.lineTo(0, -0.25); shape.lineTo(-0.35, -0.5); shape.closePath();
+  const arrow = new THREE.Mesh(new THREE.ShapeGeometry(shape),
+    new THREE.MeshBasicMaterial({ color: 0xff6b5b, side: THREE.DoubleSide }));
+  arrow.rotation.x = -Math.PI / 2;                                  // วางราบบนพื้น ปลายชี้ −Z (ด้านบนแผนผัง)
+  const g = new THREE.Group();
+  g.add(arrow);
+  g.rotation.y = THREE.MathUtils.degToRad(C.mapUpAzimuth);          // ทิศเหนืออยู่ที่ bearing −mapUpAzimuth
+  g.position.set(x0 - 1.4, 0.02, (z0 + z1) / 2);
+  scene.add(g);
+}
+
 /* ---------- เริ่ม / วนวาด ---------- */
 
 async function build() {
@@ -208,6 +226,7 @@ async function build() {
   M.rooms.forEach((r, i) => addRoom(r, i, atlas));
   addPins();
   addArtworks();
+  addNorth();
 
   // มองจากมุมเฉียงด้านบน ให้เห็นทั้งอาคาร
   const all = new THREE.Box3();

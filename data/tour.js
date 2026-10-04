@@ -26,6 +26,12 @@ window.TOUR = {
       }
     ]
   },
+  "compass": {
+    "door": "p194",
+    "doorYaw": 5.9,
+    "doorAzimuth": 35.0,
+    "mapUpAzimuth": 38.1
+  },
   "model": {
     "scale": 0.20625,
     "height": 2.142,
