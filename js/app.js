@@ -156,7 +156,6 @@
     if (!s) return;
     $("scene-title").textContent = s.title;
     $("scene-desc").textContent = s.description || "";
-    document.title = s.title + " · " + TOUR.title;
     if (location.hash.slice(1) !== s.id) history.replaceState(null, "", "#" + encodeURIComponent(s.id));
     Array.prototype.forEach.call(document.querySelectorAll("#scene-items button"), function (b) {
       b.classList.toggle("active", b.dataset.id === s.id);
