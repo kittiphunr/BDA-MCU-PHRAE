@@ -8,16 +8,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@500;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo/icon-192.png">
+  <link rel="apple-touch-icon" href="images/logo/apple-touch-icon.png">
+  <link rel="preload" as="image" href="images/logo/mcu-logo.png">
   <link rel="stylesheet" href="vendor/pannellum/pannellum.css">
-  <link rel="stylesheet" href="css/style.css?v=61bee00">
+  <link rel="stylesheet" href="css/style.css?v=d1530c5">
 </head>
 <body>
+  <!-- หน้าโหลด: แสดงจนภาพ 360° แรกโหลดเสร็จ -->
+  <div id="preloader" class="preloader" role="status" aria-live="polite">
+    <div class="preloader-logo">
+      <span class="preloader-ring" aria-hidden="true"></span>
+      <img src="images/logo/mcu-logo.png" alt="ตราสัญลักษณ์มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย" width="128" height="128">
+    </div>
+    <p class="preloader-title">หอพุทธศิลป์</p>
+    <p class="preloader-text">มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย วิทยาเขตแพร่</p>
+    <div class="preloader-bar" aria-hidden="true"><span id="preloader-fill"></span></div>
+    <p class="preloader-status" id="preloader-status">กำลังโหลดภาพ 360°…</p>
+  </div>
+
   <div id="viewer" aria-label="ภาพ 360 องศา"></div>
 
   <!-- แถบหัวเรื่อง -->
   <header class="topbar">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true">☸</span>
+      <img class="brand-mark" src="images/logo/mcu-logo.png" alt="ตราสัญลักษณ์ มจร" width="42" height="42">
       <div>
         <h1 id="tour-title">หอพุทธศิลป์</h1>
         <p id="scene-title" class="scene-title"></p>
@@ -85,7 +101,7 @@
   <!-- หน้าต้อนรับ -->
   <section id="intro" class="intro">
     <div class="intro-card">
-      <span class="intro-mark" aria-hidden="true">☸</span>
+      <img class="intro-mark" src="images/logo/mcu-logo.png" alt="ตราสัญลักษณ์มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย" width="96" height="96">
       <h2 id="intro-title">หอพุทธศิลป์</h2>
       <p id="intro-sub"></p>
       <ul class="intro-help">
@@ -101,7 +117,7 @@
   <div id="toast" class="toast" role="status"></div>
 
   <script src="vendor/pannellum/pannellum.js"></script>
-  <script src="data/tour.js?v=61bee00"></script>
-  <script src="js/app.js?v=61bee00"></script>
+  <script src="data/tour.js?v=d1530c5"></script>
+  <script src="js/app.js?v=d1530c5"></script>
 </body>
 </html>

@@ -475,6 +475,29 @@
     if (pendingInfo) { showInfo(pendingInfo); pendingInfo = null; }
   });
 
+  /* ---------- หน้าโหลด (preloader) ---------- */
+
+  var preloader = $("preloader");
+  function hidePreloader() {
+    if (!preloader || preloader.classList.contains("done")) return;
+    $("preloader-fill").style.width = "100%";
+    preloader.classList.add("done");
+    setTimeout(function () { preloader.hidden = true; }, 700);
+  }
+  // คัดลอกความคืบหน้าจากแถบโหลดของ Pannellum มาแสดงในหน้าโหลด
+  (function progress() {
+    if (!preloader || preloader.classList.contains("done")) return;
+    var fill = document.querySelector("#viewer .pnlm-lbar-fill");
+    if (fill && fill.style.width) $("preloader-fill").style.width = fill.style.width;
+    setTimeout(progress, 150);
+  })();
+  viewer.on("load", hidePreloader);
+  viewer.on("error", function () {
+    $("preloader-status").textContent = "โหลดภาพไม่สำเร็จ";
+    setTimeout(hidePreloader, 1200);
+  });
+  setTimeout(hidePreloader, 25000);   // กันค้าง
+
   /* ---------- หน้าต้อนรับ ---------- */
 
   $("tour-title").textContent = TOUR.title;
