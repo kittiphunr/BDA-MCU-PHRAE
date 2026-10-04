@@ -1366,6 +1366,9 @@ window.TOUR = {
         },
         {
           "to": "p215"
+        },
+        {
+          "to": "p194"
         }
       ],
       "infos": []
@@ -1399,7 +1402,11 @@ window.TOUR = {
         "y": 5.39
       },
       "northOffset": -13.6,
-      "links": [],
+      "links": [
+        {
+          "to": "p194"
+        }
+      ],
       "infos": []
     }
   ],
