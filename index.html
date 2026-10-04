@@ -50,6 +50,25 @@
     </nav>
   </header>
 
+  <!-- เข็มทิศ -->
+  <button id="compass" class="compass" type="button" hidden
+          title="เข็มทิศ — คลิกเพื่อหันไปทางทิศเหนือ" aria-label="เข็มทิศ คลิกเพื่อหันไปทางทิศเหนือ">
+    <svg viewBox="-50 -50 100 100" aria-hidden="true">
+      <circle r="47" class="ring"/>
+      <g id="compass-rose">
+        <path d="M0 -40 L7 0 L0 40 L-7 0 Z" class="needle-s"/>
+        <path d="M0 -40 L7 0 L-7 0 Z" class="needle-n"/>
+        <text y="-28" class="n">N</text>
+        <text x="31" y="4" class="t">E</text>
+        <text y="36" class="t">S</text>
+        <text x="-31" y="4" class="t">W</text>
+      </g>
+      <circle r="4" class="hub"/>
+      <path d="M0 -50 L5 -42 L-5 -42 Z" class="mark"/>
+    </svg>
+    <span id="compass-text" class="compass-text"></span>
+  </button>
+
   <!-- แผนผัง (mini-map) -->
   <aside id="minimap" class="panel minimap" aria-label="แผนผังอาคาร">
     <div class="panel-head">

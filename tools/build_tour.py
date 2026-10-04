@@ -215,6 +215,19 @@ def build_atlas(order):
     return {"image": "images/model/atlas.jpg", "cols": ATLAS_COLS, "rows": rows, "cells": cells}
 
 
+# เข็มทิศ: มองออกทางประตูห้องโถง (จาก 194 ไป 195) หันไปทิศตะวันออกเฉียงเหนือ 35° (ข้อมูลจากผู้ดูแล)
+DOOR_AZIMUTH = 35.0
+
+
+def compass(north):
+    """มุมทิศจริง (องศาจากทิศเหนือ ตามเข็มนาฬิกา) ของ "ด้านบนแผนผัง"
+    ทิศประตูบนแผนผัง = yaw ที่วัดได้ใน 194 ไปยัง 195 − northOffset ของ 194"""
+    door_yaw = json.load(open(CACHE))[a_b(DOOR)]["yaw"]
+    door_bearing = solve_map.wrap(door_yaw - north[DOOR[0]])
+    return {"door": "p" + DOOR[0], "doorYaw": round(door_yaw, 1), "doorAzimuth": DOOR_AZIMUTH,
+            "mapUpAzimuth": round((DOOR_AZIMUTH - door_bearing) % 360, 1)}
+
+
 def same_room(a, b):
     corridor = ALL.index("195")
     return (ALL.index(a) >= corridor) == (ALL.index(b) >= corridor) or {a, b} == set(DOOR)
@@ -330,6 +343,7 @@ def main():
         "subtitle": "พิพิธภัณฑ์เสมือนจริง 360° · มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย วิทยาเขตแพร่",
         "firstScene": "p" + FIRST,
         "floorPlan": {"image": None, "rooms": rooms},
+        "compass": compass(north),
         "model": {
             # หน่วย 3 มิติ = ความสูงกล้อง; พิกัด x,y ของแผนผัง × scale = ตำแหน่งบนพื้น
             "scale": round(m_scale, 5),
