@@ -858,7 +858,42 @@ window.TOUR = {
           "to": "p136"
         }
       ],
-      "infos": []
+      "infos": [
+        {
+          "yaw": -6.5,
+          "pitch": -6,
+          "artwork": "a13",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a13.jpg"
+        },
+        {
+          "yaw": 7,
+          "pitch": -6,
+          "artwork": "a15",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a15.jpg",
+          "approx": true
+        },
+        {
+          "yaw": 37,
+          "pitch": -6,
+          "artwork": "a16",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a16.jpg",
+          "approx": true
+        },
+        {
+          "yaw": 21,
+          "pitch": -8,
+          "artwork": "a17",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a17.jpg"
+        }
+      ]
     },
     {
       "id": "p136",
@@ -1016,42 +1051,6 @@ window.TOUR = {
           "title": "ภาพประดิษฐ์ “มนตราแห่งเลขยันต์”",
           "subtitle": "Artificial image “Montra of the number”",
           "card": "images/artworks/a07.jpg"
-        },
-        {
-          "yaw": -72,
-          "pitch": -9,
-          "artwork": "a13",
-          "title": "พระพุทธรูปปางมารวิชัย",
-          "subtitle": "Maravichaya Buddha Image Style",
-          "card": "images/artworks/a13.jpg",
-          "approx": true
-        },
-        {
-          "yaw": -66,
-          "pitch": -11,
-          "artwork": "a15",
-          "title": "พระพุทธรูปปางมารวิชัย",
-          "subtitle": "Maravichaya Buddha Image Style",
-          "card": "images/artworks/a15.jpg",
-          "approx": true
-        },
-        {
-          "yaw": -58,
-          "pitch": -4,
-          "artwork": "a16",
-          "title": "พระพุทธรูปปางมารวิชัย",
-          "subtitle": "Maravichaya Buddha Image Style",
-          "card": "images/artworks/a16.jpg",
-          "approx": true
-        },
-        {
-          "yaw": -33,
-          "pitch": -12,
-          "artwork": "a17",
-          "title": "พระพุทธรูปปางมารวิชัย",
-          "subtitle": "Maravichaya Buddha Image Style",
-          "card": "images/artworks/a17.jpg",
-          "approx": true
         },
         {
           "yaw": 59,
@@ -1609,10 +1608,9 @@ window.TOUR = {
       "card": "images/artworks/a13.jpg",
       "placements": [
         {
-          "pano": "151",
-          "yaw": -72,
-          "pitch": -9,
-          "approx": true
+          "pano": "128",
+          "yaw": -6.5,
+          "pitch": -6
         }
       ]
     },
@@ -1638,9 +1636,9 @@ window.TOUR = {
       "card": "images/artworks/a15.jpg",
       "placements": [
         {
-          "pano": "151",
-          "yaw": -66,
-          "pitch": -11,
+          "pano": "128",
+          "yaw": 7,
+          "pitch": -6,
           "approx": true
         }
       ]
@@ -1653,9 +1651,9 @@ window.TOUR = {
       "card": "images/artworks/a16.jpg",
       "placements": [
         {
-          "pano": "151",
-          "yaw": -58,
-          "pitch": -4,
+          "pano": "128",
+          "yaw": 37,
+          "pitch": -6,
           "approx": true
         }
       ]
@@ -1668,10 +1666,9 @@ window.TOUR = {
       "card": "images/artworks/a17.jpg",
       "placements": [
         {
-          "pano": "151",
-          "yaw": -33,
-          "pitch": -12,
-          "approx": true
+          "pano": "128",
+          "yaw": 21,
+          "pitch": -8
         }
       ]
     },
