@@ -282,14 +282,19 @@ def main():
     m_scale, hall, corr, shift = geometry.solve(mp, corridor_ids)
     for n in corridor_ids:
         mp[n] = mp[n] + np.array([0.0, shift])
-    # ระเบียงวิ่งขนานและยาวเสมอห้องโถง (ตามที่ผู้ดูแลยืนยัน): เริ่มที่ประตู (195 ตรงกับ 194)
-    # แล้ววิ่งไปตามความยาวห้องจนสุดอีกฝั่ง ภาพระเบียงจึงถูกสะท้อนซ้าย-ขวาบนแผนผัง (mirror)
-    # ทิศลูกศรในภาพ 360° ทุกภาพยังตรงตำแหน่งเดิม เพราะหน้าเว็บแปลงทิศด้วย yaw = northOffset − bearing
-    x0 = mp[DOOR[1]][0]
-    far = max(mp[n][0] - x0 for n in corridor_ids)
-    k = (mp[DOOR[0]][0] - (hall["left"] + 2.0)) / far
-    for n in corridor_ids:
-        mp[n] = np.array([mp[DOOR[0]][0] - (mp[n][0] - x0) * k, mp[n][1]])
+    # ระเบียงยาวเสมอห้องโถง (ข้อมูลจากผู้ดูแล + ภาพ): ประตู 195 อยู่ตรงประตู 194 ปลายฝั่งแท่นพระประธาน
+    # ผู้ถ่ายออกประตูแล้วไปเริ่มที่ปลายระเบียงฝั่งตะวันตก (201) เดินกลับมาทางตะวันออก
+    # จนถึงประตูที่มีป้าย "หอพุทธศิลป์" (212/220) ซึ่งอยู่ถัดจากประตู 194 ไปทางตะวันตก
+    # ทิศการเดินและด้านของห้อง (ห้องอยู่ขวามือเมื่อเดินไปตะวันออก) เป็นไปตามภาพ จึงไม่ต้องสะท้อนภาพ
+    # ส่วนระยะระหว่างจุด (เทียบภาพข้ามระเบียงกับห้องไม่ได้) ยืดให้เต็มความยาวห้อง
+    line = [n for n in corridor_ids if n != DOOR[1]]
+    xs = {n: mp[n][0] for n in line}
+    lo_x, hi_x = min(xs.values()), max(xs.values())
+    door_x = mp[DOOR[0]][0]
+    x_west, x_east = hall["left"] + 2.0, door_x - 6.0
+    for n in line:
+        mp[n] = np.array([x_west + (xs[n] - lo_x) / (hi_x - lo_x) * (x_east - x_west), mp[n][1]])
+    mp[DOOR[1]] = np.array([door_x, mp[DOOR[1]][1]])
     corr["left"], corr["right"] = hall["left"], hall["right"]
     rooms = []
     for (label, _, _), r in zip(ROOMS, (hall, corr)):
@@ -311,7 +316,10 @@ def main():
             print("   ภาพ", out, file=sys.stderr)
 
     links = {n: [] for n in order}
-    for a, b in pick_links(pos, walks):
+    walks = [e for e in walks if DOOR[1] not in e or set(e) == set(DOOR)]
+    near = sorted(line, key=lambda n: abs(mp[n][0] - door_x))[:2]
+    walks += [tuple(sorted((DOOR[1], n))) for n in near]
+    for a, b in pick_links(mp, walks):
         links[a].append({"to": "p" + b})     # ลิงก์กลับสร้างอัตโนมัติในหน้าเว็บ
     infos = load_artworks(keep)
 
@@ -327,7 +335,6 @@ def main():
             "image": "images/panoramas/p%s.jpg" % n,
             "map": {"x": round(float(mp[n][0]), 2), "y": round(float(mp[n][1]), 2)},
             "northOffset": round(north[n], 1),
-            **({"mirror": True} if n in corridor_ids else {}),
             "links": links[n],
             "infos": infos.get(n, []),
         })
