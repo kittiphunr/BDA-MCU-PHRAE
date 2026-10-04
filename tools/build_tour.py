@@ -89,6 +89,8 @@ ZONES = [
 ]
 FIRST = "220"
 
+DOOR = ("194", "195")   # ประตูระหว่างห้องโถงกับระเบียง
+
 # คู่ที่ผลคำนวณขัดกับคู่อื่น (มุมหมุนผิด) — ไม่ใช้
 SKIP = {"098>105"}
 
@@ -104,11 +106,13 @@ def artworks():
     return json.load(open(ARTWORKS)) if os.path.exists(ARTWORKS) else []
 
 
-def load_artworks():
-    """จุดข้อมูลงานศิลปะ (tools/artworks.json) → {ภาพ: [infos]}"""
+def load_artworks(keep=None):
+    """จุดข้อมูลงานศิลปะ (tools/artworks.json) → {ภาพ: [infos]} เฉพาะภาพที่ใช้"""
     out = {}
     for a in artworks():
         for p in a.get("placements", []):
+            if keep is not None and p["pano"] not in keep:
+                continue
             out.setdefault(p["pano"], []).append({
                 "yaw": p["yaw"], "pitch": p["pitch"], "artwork": a["id"],
                 "title": a["title"], "subtitle": a.get("title_en", ""),
@@ -187,9 +191,41 @@ def pick_links(pos, edges, min_sep=35, max_links=6):
     return keep
 
 
+def same_room(a, b):
+    corridor = ALL.index("195")
+    return (ALL.index(a) >= corridor) == (ALL.index(b) >= corridor) or {a, b} == set(DOOR)
+
+
+def walk_edges(pos, used, keep, spacing):
+    """ทางเดินระหว่างจุดที่เก็บไว้: คู่ที่วัดได้โดยตรง + ทางที่เคยผ่านจุดที่ถูกตัด (A–x–B เกือบเป็นเส้นตรง)
+    ไม่เชื่อมข้ามผนังระหว่างห้องโถงกับระเบียง ยกเว้นที่ประตู"""
+    K = set(keep)
+    out = {tuple(sorted(e[:2])) for e in used if e[0] in K and e[1] in K and same_room(e[0], e[1])}
+    adj = {}
+    for a, b, *_ in used:
+        adj.setdefault(a, set()).add(b)
+        adj.setdefault(b, set()).add(a)
+    for x in ALL:
+        if x in K:
+            continue
+        nb = sorted(n for n in adj.get(x, ()) if n in K)
+        for i, a in enumerate(nb):
+            for b in nb[i + 1:]:
+                va, vb = pos[a] - pos[x], pos[b] - pos[x]
+                cos = va @ vb / (np.linalg.norm(va) * np.linalg.norm(vb))
+                if (cos < math.cos(math.radians(110)) and same_room(a, b)
+                        and np.linalg.norm(pos[a] - pos[b]) <= 2.2 * spacing):
+                    out.add(tuple(sorted((a, b))))
+    return sorted(out)
+
+
 def main():
+    import select_panos
     edges = load_edges()
     north, pos, used = solve_map.solve(ALL, edges, ALL[0])
+    # ตัดภาพที่ซ้ำซ้อน: แผนผังคำนวณจากทุกภาพ (แม่นกว่า) แต่ทัวร์ใช้เฉพาะภาพที่เลือก
+    keep = select_panos.select({k: np.asarray(v) for k, v in pos.items()})
+    walks = walk_edges(pos, used, keep, select_panos.SPACING)
     # ห้องเป็นกล่อง: หมุนให้ผนังขนานแกน แล้วหมุนอีก 90° ให้ห้องยาวตามแนวนอนของจอ
     turn = solve_map.manhattan_angle(north, used) + 90
     R = math.radians(-turn)
@@ -197,6 +233,8 @@ def main():
     pos = {n: rot @ p for n, p in pos.items()}
     north = {n: solve_map.wrap(v + turn) for n, v in north.items()}
 
+    pos = {n: pos[n] for n in keep}
+    north = {n: north[n] for n in keep}
     pts = np.array(list(pos.values()))
     lo, hi = pts.min(0), pts.max(0)
     scale = 92 / max(hi - lo)
@@ -205,14 +243,17 @@ def main():
     # กรอบห้องจากตำแหน่งจุดถ่าย
     rooms = []
     for label, ids, pad in ROOMS:
-        q = np.array([mp[i] for i in ids])
+        q = np.array([mp[i] for i in ids if i in mp])
         (x0, y0), (x1, y1) = q.min(0) - pad, q.max(0) + pad
         rooms.append({"label": label, "x": round(float(x0), 2), "y": round(float(y0), 2),
                       "w": round(float(x1 - x0), 2), "h": round(float(y1 - y0), 2)})
 
     # ภาพ
     os.makedirs(OUT_IMG, exist_ok=True)
-    order = ALL
+    order = keep
+    for old in os.listdir(OUT_IMG):          # ลบภาพที่ไม่ได้ใช้แล้ว
+        if old.startswith("p") and old.endswith(".jpg") and old[1:-4] not in keep:
+            os.remove(os.path.join(OUT_IMG, old))
     for n in order:
         out = os.path.join(OUT_IMG, "p%s.jpg" % n)
         if not os.path.exists(out):
@@ -222,9 +263,9 @@ def main():
             print("   ภาพ", out, file=sys.stderr)
 
     links = {n: [] for n in order}
-    for a, b in pick_links(pos, used):
+    for a, b in pick_links(pos, walks):
         links[a].append({"to": "p" + b})     # ลิงก์กลับสร้างอัตโนมัติในหน้าเว็บ
-    infos = load_artworks()
+    infos = load_artworks(keep)
 
     count = {}
     scenes = []
@@ -257,7 +298,8 @@ def main():
         "artworks": [{
             "id": a["id"], "card_no": a["card_no"], "title": a["title"], "title_en": a.get("title_en", ""),
             "card": "images/artworks/%s.jpg" % a["id"],
-            "placements": [{"pano": p["pano"], "yaw": p["yaw"], "pitch": p["pitch"]} for p in a.get("placements", [])],
+            "placements": [{"pano": p["pano"], "yaw": p["yaw"], "pitch": p["pitch"]}
+                           for p in a.get("placements", []) if p["pano"] in keep],
         } for a in artworks()],
     }
     with open(os.path.join(ROOT, "data", "tour.js"), "w") as f:
