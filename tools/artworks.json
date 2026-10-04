@@ -278,11 +278,10 @@
   "title_en": "Maravichaya Buddha Image Style",
   "placements": [
    {
-    "pano": "151",
-    "yaw": -72,
-    "pitch": -9,
-    "source": "manual",
-    "approx": true
+    "pano": "128",
+    "yaw": -6.5,
+    "pitch": -6,
+    "source": "manual"
    }
   ]
  },
@@ -307,9 +306,9 @@
   "title_en": "Maravichaya Buddha Image Style",
   "placements": [
    {
-    "pano": "151",
-    "yaw": -66,
-    "pitch": -11,
+    "pano": "128",
+    "yaw": 7,
+    "pitch": -6,
     "source": "manual",
     "approx": true
    }
@@ -322,9 +321,9 @@
   "title_en": "Maravichaya Buddha Image Style",
   "placements": [
    {
-    "pano": "151",
-    "yaw": -58,
-    "pitch": -4,
+    "pano": "128",
+    "yaw": 37,
+    "pitch": -6,
     "source": "manual",
     "approx": true
    }
@@ -337,11 +336,10 @@
   "title_en": "Maravichaya Buddha Image Style",
   "placements": [
    {
-    "pano": "151",
-    "yaw": -33,
-    "pitch": -12,
-    "source": "manual",
-    "approx": true
+    "pano": "128",
+    "yaw": 21,
+    "pitch": -8,
+    "source": "manual"
    }
   ]
  },
