@@ -475,6 +475,9 @@
     if (pendingInfo) { showInfo(pendingInfo); pendingInfo = null; }
   });
 
+  // ให้โมเดล 3 มิติ (js/model3d.js) สั่งเดินไปยังจุด / เปิดงานศิลปะได้
+  window.TourApp = { goTo: goTo, openArtwork: openArtwork, currentScene: currentScene };
+
   /* ---------- หน้าโหลด (preloader) ---------- */
 
   var preloader = $("preloader");

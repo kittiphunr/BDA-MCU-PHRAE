@@ -26,6 +26,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import solve_map  # noqa: E402
+import geometry  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSET = os.path.join(ROOT, "Asset")
@@ -53,8 +54,10 @@ EXTRA = [("096", "105"), ("183", "181"), ("195", "197")]
 #   yaw: ทิศไปภาพปลายทาง (yaw ในภาพต้นทาง), rot: yaw ในภาพต้นทางที่ตรงกับ yaw 0 ของปลายทาง
 MANUAL = {
     ("183", "181"): {"yaw": 175.0, "rot": -5.0, "len": 0.6},    # หลังองค์พระพุทธรูป
-    ("195", "199"): {"yaw": -72.0, "rot": -176.0, "len": 1.0},  # ประตู → ระเบียงซ้าย
-    ("195", "197"): {"yaw": 100.0, "rot": -176.0, "len": 1.2},  # ประตู → ระเบียงขวา (บันได)
+    # ยืนที่ประตูหันออกนอก (yaw 0): ห้องโถงอยู่ด้านหลัง ระเบียงไปทาง 199→212 อยู่ทางขวา
+    # (เดินไปทาง 212 แล้วห้องโถงอยู่ขวามือ ตรงกับภาพ 199/201) ส่วนบันได (197) อยู่ทางซ้าย
+    ("195", "199"): {"yaw": 72.0, "rot": 4.0, "len": 1.0},
+    ("195", "197"): {"yaw": -100.0, "rot": 4.0, "len": 1.2},
 }
 
 ZONES = [
@@ -191,6 +194,27 @@ def pick_links(pos, edges, min_sep=35, max_links=6):
     return keep
 
 
+ATLAS = os.path.join(ROOT, "images", "model", "atlas.jpg")
+ATLAS_CELL = (1024, 512)
+ATLAS_COLS = 4
+
+
+def build_atlas(order):
+    """รวมภาพ 360° ขนาดเล็กเป็นภาพเดียว ใช้ฉายลงพื้น/ผนังของโมเดล 3 มิติ"""
+    w, h = ATLAS_CELL
+    rows = -(-len(order) // ATLAS_COLS)
+    atlas = np.zeros((rows * h, ATLAS_COLS * w, 3), np.uint8)
+    cells = {}
+    for i, n in enumerate(order):
+        r, c = divmod(i, ATLAS_COLS)
+        im = cv2.imread(src(n, "-2048x1024"))
+        atlas[r * h:(r + 1) * h, c * w:(c + 1) * w] = cv2.resize(im, (w, h), interpolation=cv2.INTER_AREA)
+        cells["p" + n] = [c, r]
+    os.makedirs(os.path.dirname(ATLAS), exist_ok=True)
+    cv2.imwrite(ATLAS, atlas, [cv2.IMWRITE_JPEG_QUALITY, 80, cv2.IMWRITE_JPEG_PROGRESSIVE, 1])
+    return {"image": "images/model/atlas.jpg", "cols": ATLAS_COLS, "rows": rows, "cells": cells}
+
+
 def same_room(a, b):
     corridor = ALL.index("195")
     return (ALL.index(a) >= corridor) == (ALL.index(b) >= corridor) or {a, b} == set(DOOR)
@@ -240,13 +264,15 @@ def main():
     scale = 92 / max(hi - lo)
     mp = {k: (v - lo) * scale + 4 for k, v in pos.items()}
 
-    # กรอบห้องจากตำแหน่งจุดถ่าย
+    # รูปทรงห้องจากการวัดในภาพ (tools/geometry.py): ผนังห้องโถง, ระเบียง, ความสูงเพดาน
+    corridor_ids = [n for n in keep if ALL.index(n) >= ALL.index("195")]
+    m_scale, hall, corr, shift = geometry.solve(mp, corridor_ids)
+    for n in corridor_ids:
+        mp[n] = mp[n] + np.array([0.0, shift])
     rooms = []
-    for label, ids, pad in ROOMS:
-        q = np.array([mp[i] for i in ids if i in mp])
-        (x0, y0), (x1, y1) = q.min(0) - pad, q.max(0) + pad
-        rooms.append({"label": label, "x": round(float(x0), 2), "y": round(float(y0), 2),
-                      "w": round(float(x1 - x0), 2), "h": round(float(y1 - y0), 2)})
+    for (label, _, _), r in zip(ROOMS, (hall, corr)):
+        rooms.append({"label": label, "x": round(r["left"], 2), "y": round(r["top"], 2),
+                      "w": round(r["right"] - r["left"], 2), "h": round(r["bottom"] - r["top"], 2)})
 
     # ภาพ
     os.makedirs(OUT_IMG, exist_ok=True)
@@ -294,6 +320,14 @@ def main():
         "subtitle": "พิพิธภัณฑ์เสมือนจริง 360° · มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย วิทยาเขตแพร่",
         "firstScene": "p" + FIRST,
         "floorPlan": {"image": None, "rooms": rooms},
+        "model": {
+            # หน่วย 3 มิติ = ความสูงกล้อง; พิกัด x,y ของแผนผัง × scale = ตำแหน่งบนพื้น
+            "scale": round(m_scale, 5),
+            "height": round(geometry.room_height(), 3),
+            "railHeight": geometry.RAIL_HEIGHT,
+            "rooms": [dict(r, kind=k) for r, k in zip(rooms, ("hall", "corridor"))],
+            "atlas": build_atlas(order),
+        },
         "scenes": scenes,
         "artworks": [{
             "id": a["id"], "card_no": a["card_no"], "title": a["title"], "title_en": a.get("title_en", ""),
