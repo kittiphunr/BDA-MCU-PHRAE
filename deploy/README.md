@@ -10,10 +10,14 @@ deploy/
 ├── nginx/bda-360.conf    ตั้งค่า Nginx สำหรับ VPS
 ├── apache/.htaccess      ตั้งค่า Apache / cPanel (ใส่ใน dist/ ให้อัตโนมัติ)
 ├── docker/               Dockerfile + docker-compose.yml (nginx)
-└── dist/                 ← ผลจาก build.sh (ไม่เก็บใน git)
+└── dist/                 ← ไฟล์พร้อมขึ้นเซิร์ฟเวอร์ (ผลจาก build.sh, เก็บใน git แล้ว)
 ```
 
 ## ขั้นที่ 1: build
+
+> `deploy/dist/` มีไฟล์พร้อมใช้อยู่ใน repo แล้ว — อัปโหลดโฟลเดอร์นี้ได้ทันทีโดยไม่ต้อง build
+> **เมื่อแก้เว็บ (index.html, css, js, data, ภาพ) ต้องรัน build.sh ใหม่แล้ว commit `deploy/dist/` ด้วย**
+> ไม่เช่นนั้นไฟล์ใน dist จะเป็นเวอร์ชันเก่า
 
 ```bash
 bash deploy/build.sh
