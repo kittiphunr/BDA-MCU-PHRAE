@@ -24,6 +24,7 @@
       </div>
     </div>
     <nav class="tools" aria-label="เครื่องมือ">
+      <button id="btn-art" class="icon-btn" title="งานศิลปะทั้งหมด" aria-label="งานศิลปะทั้งหมด">❖</button>
       <button id="btn-list" class="icon-btn" title="รายการจุดชม" aria-label="รายการจุดชม">☰</button>
       <button id="btn-map" class="icon-btn" title="แผนผัง" aria-label="แผนผัง">◎</button>
       <button id="btn-rotate" class="icon-btn" title="หมุนอัตโนมัติ" aria-label="หมุนอัตโนมัติ">⟳</button>
@@ -50,11 +51,26 @@
     <ol id="scene-items"></ol>
   </aside>
 
+  <!-- รายการงานศิลปะ -->
+  <aside id="art-list" class="panel scene-list art-list" aria-label="งานศิลปะทั้งหมด" hidden>
+    <div class="panel-head">
+      <span>งานศิลปะ <small id="art-count"></small></span>
+      <button class="close" data-close="art-list" aria-label="ปิด">×</button>
+    </div>
+    <input id="art-search" class="art-search" type="search" placeholder="ค้นหา เช่น พระพุทธรูป, ตุง, ขันหมาก" aria-label="ค้นหางานศิลปะ">
+    <ol id="art-items"></ol>
+  </aside>
+
   <!-- กล่องข้อมูลวัตถุจัดแสดง -->
   <aside id="info-card" class="info-card" hidden aria-live="polite">
     <button class="close" data-close="info-card" aria-label="ปิด">×</button>
     <h2 id="info-title"></h2>
+    <p id="info-sub" class="info-sub"></p>
     <p id="info-text"></p>
+    <a id="info-link" class="info-img-link" target="_blank" rel="noopener" hidden>
+      <img id="info-img" alt="">
+    </a>
+    <p id="info-where" class="info-where"></p>
   </aside>
 
   <!-- คำอธิบายจุดและปุ่มเดิน -->
@@ -75,6 +91,7 @@
       <ul class="intro-help">
         <li>ลากเมาส์ / นิ้ว เพื่อมองรอบ ๆ</li>
         <li>คลิก <b>ลูกศรบนพื้น</b> เพื่อเดินไปยังจุดถัดไป</li>
+        <li>คลิก <b>ⓘ</b> ที่วัตถุ หรือปุ่ม ❖ เพื่ออ่านข้อมูลงานศิลปะ</li>
         <li>คลิกจุดบน <b>แผนผัง</b> หรือ ☰ เพื่อไปยังจุดที่ต้องการ</li>
       </ul>
       <button id="btn-start" class="start">เริ่มชมนิทรรศการ</button>

@@ -116,11 +116,11 @@ button { font: inherit; color: inherit; }
 .minimap {
   right: 16px;
   bottom: 84px;
-  width: 260px;
+  width: 360px;
 }
 #map-svg { display: block; width: 100%; height: auto; aspect-ratio: 1; padding: 0 8px 8px; }
 #map-svg .room { fill: rgba(212, 175, 55, 0.07); stroke: rgba(212, 175, 55, 0.4); stroke-width: .4; }
-#map-svg .room-label { fill: var(--muted); font-size: 3.2px; text-anchor: middle; font-family: var(--font); }
+#map-svg .room-label { fill: var(--muted); font-size: 2.6px; text-anchor: start; font-family: var(--font); opacity: .8; }
 #map-svg .path { stroke: var(--gold); stroke-width: .55; opacity: .6; }
 #map-svg .cone path { fill: rgba(241, 217, 138, 0.35); stroke: none; }
 #map-svg .node { cursor: pointer; }
@@ -374,7 +374,7 @@ button { font: inherit; color: inherit; }
   .brand-mark { width: 34px; height: 34px; font-size: 19px; }
   .icon-btn { width: 36px; height: 36px; font-size: 16px; }
   .tools { gap: 4px; }
-  #btn-share { display: none; }
+  #btn-share, #btn-rotate { display: none; }
   .minimap { left: 16px; right: 16px; width: auto; bottom: 76px; }
   #map-svg { aspect-ratio: 1.6; }
   .scene-list { left: 16px; right: 16px; width: auto; top: 76px; }
@@ -382,3 +382,44 @@ button { font: inherit; color: inherit; }
   .scene-desc { font-size: 13px; }
   .forward { max-width: none; }
 }
+
+/* ---------- งานศิลปะ ---------- */
+.info-card {
+  width: min(760px, calc(100% - 32px));
+  max-height: calc(100% - 120px);
+  overflow: auto;
+}
+.info-card .info-sub { margin: -4px 0 10px; color: var(--muted); font-style: italic; }
+.info-sub:empty, #info-text:empty, .info-where:empty { display: none; }
+.info-img-link { display: block; margin-top: 4px; }
+.info-img-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: #fff;
+}
+.info-card .info-where { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+
+.art-list .art-search {
+  display: block;
+  width: calc(100% - 16px);
+  margin: 0 8px 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text);
+  font: inherit;
+}
+.art-list .art-search:focus { outline: none; border-color: var(--gold); }
+.art-list .t { display: flex; flex-direction: column; min-width: 0; }
+.art-list .en { color: var(--muted); font-size: 12px; }
+.art-list .num { width: 28px; height: 28px; }
+.art-list button.no-place .num { border-style: dashed; opacity: .7; }
+.art-list li[hidden] { display: none; }
+.panel-head small { color: var(--muted); font-family: var(--font); }
+.panel-head > span { white-space: nowrap; }
+
+/* จุดข้อมูลงานศิลปะในภาพ 360° */
+.sv-info-dot { font-size: 16px; }

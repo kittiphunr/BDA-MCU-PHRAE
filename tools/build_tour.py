@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """สร้าง data/tour.js และภาพสำหรับเว็บ จากภาพ 360° ใน Asset/
 
-ขั้นตอน
-  1. ประมาณทิศเดิน + มุมหมุนระหว่างภาพคู่ที่เชื่อมกัน (tools/estimate_links.py)
-     ผลเก็บไว้ที่ tools/links-cache.json (ลบไฟล์นี้ถ้าต้องการคำนวณใหม่)
-  2. ไล่ตำแหน่งบนแผนผังแบบ dead-reckoning และหา northOffset ของทุกภาพ
-     ระยะก้าวประมาณจากสามเหลี่ยมของภาพสามภาพติดกัน
-  3. ย่อภาพเป็น 4096×2048 ลง images/panoramas/ และเขียน data/tour.js
+ขั้นตอน (จากรากโปรเจกต์)
+  1. python3 tools/pairs.py window 5
+       เปรียบเทียบภาพทุกคู่ที่ถ่ายห่างกันไม่เกิน 5 ภาพ (SIFT + Essential matrix บนทรงกลม)
+       ผลเก็บใน tools/links-cache.json
+  2. python3 tools/build_tour.py
+       - คำนวณมุมหันและตำแหน่งของทุกจุดพร้อมกันจากทุกคู่ (tools/solve_map.py)
+       - หมุนแผนผังให้ผนังห้อง (ห้องเป็นกล่อง) ขนานแกน และวาดกรอบห้อง
+       - เลือกลูกศรไปยังจุดใกล้เคียงหลายทิศ (คู่สั้นก่อน ไม่ให้ลูกศรชี้ซ้อนกัน)
+       - ใส่จุดข้อมูลงานศิลปะจาก tools/artworks.json
+       - ย่อภาพเป็น 4096×2048 ลง images/panoramas/ และเขียน data/tour.js
+  (ไม่บังคับ) ถ้าแผนผังเปลี่ยนมาก ให้หาคู่ที่อยู่ใกล้กันบนแผนผังเพิ่มด้วย
+       python3 tools/pairs.py list 130>153 ...   แล้วรันข้อ 2 ใหม่
 
-ใช้งาน (จากรากโปรเจกต์):
-  pip install numpy opencv-python-headless pillow
-  python3 tools/build_tour.py
+ต้องติดตั้ง: pip install numpy scipy opencv-python-headless
 """
 import json
 import math
@@ -21,7 +25,7 @@ import cv2
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import estimate_links as est  # noqa: E402
+import solve_map  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSET = os.path.join(ROOT, "Asset")
@@ -41,6 +45,8 @@ MAIN = ["039", "048", "050", "053", "057", "060", "063", "065", "069", "072",
         "153", "155", "158", "172", "175", "177", "179", "183", "189", "194",
         "195", "199", "201", "203", "205", "206", "209", "210", "212", "215",
         "220"]
+# ภาพทั้งหมดตามลำดับการถ่าย (รวมทางแยก)
+ALL = MAIN[:MAIN.index("183")] + ["181"] + MAIN[MAIN.index("183"):MAIN.index("199")] + ["197"] + MAIN[MAIN.index("199"):]
 EXTRA = [("096", "105"), ("183", "181"), ("195", "197")]
 
 # คู่ที่จับจุดเด่นไม่ได้ (ภาพต่างกันมาก) — กำหนดจากการดูภาพ
@@ -83,6 +89,33 @@ ZONES = [
 ]
 FIRST = "220"
 
+# คู่ที่ผลคำนวณขัดกับคู่อื่น (มุมหมุนผิด) — ไม่ใช้
+SKIP = {"098>105"}
+
+# กรอบห้องบนแผนผัง: (ชื่อ, จุดถ่ายในห้อง, ระยะเผื่อขอบ)
+ROOMS = [
+    ("ห้องจัดแสดง หอพุทธศิลป์", [n for n in ALL[:ALL.index("194") + 1] if n != "113"], 1.5),
+    ("ระเบียงทางเดิน", ALL[ALL.index("195"):], 1.0),
+]
+ARTWORKS = os.path.join(ROOT, "tools", "artworks.json")
+
+
+def artworks():
+    return json.load(open(ARTWORKS)) if os.path.exists(ARTWORKS) else []
+
+
+def load_artworks():
+    """จุดข้อมูลงานศิลปะ (tools/artworks.json) → {ภาพ: [infos]}"""
+    out = {}
+    for a in artworks():
+        for p in a.get("placements", []):
+            out.setdefault(p["pano"], []).append({
+                "yaw": p["yaw"], "pitch": p["pitch"], "artwork": a["id"],
+                "title": a["title"], "subtitle": a.get("title_en", ""),
+                "card": "images/artworks/%s.jpg" % a["id"],
+            })
+    return out
+
 
 def zone_of(n):
     for ids, title, desc in ZONES:
@@ -91,101 +124,95 @@ def zone_of(n):
     raise KeyError(n)
 
 
-def estimate_pairs(pairs):
-    cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
-    feats = {}
-
-    def F(n):
-        if n not in feats:
-            im = est.load(src(n))
-            feats[n] = (est.features(im), (im.shape[1], im.shape[0]))
-        return feats[n]
-
-    for a, b in pairs:
-        key = a + ">" + b
-        if key in cache:
+def load_edges():
+    """คู่ภาพที่ใช้ได้จาก tools/links-cache.json (สร้างด้วย tools/pairs.py) + คู่ที่กำหนดเอง"""
+    cache = json.load(open(CACHE))
+    verified = set(zip(MAIN, MAIN[1:])) | set(EXTRA)
+    edges = []
+    for key, r in cache.items():
+        a, b = key.split(">")
+        if a not in ALL or b not in ALL or (a, b) in MANUAL or key in SKIP:
             continue
-        fa, wh = F(a)
-        fb, _ = F(b)
-        r = est.estimate(fa, fb, wh) or {"inliers": 0}
-        cache[key] = {k: float(v) for k, v in r.items()}
-        print("  ", key, cache[key], file=sys.stderr)
-        json.dump(cache, open(CACHE, "w"), indent=1, sort_keys=True)
-    return cache
+        # คู่ตามเส้นทางเดิมผ่านการตรวจด้วยตาแล้ว จึงผ่อนเกณฑ์ลงได้
+        if solve_map.reliable(r) or ((a, b) in verified and r.get("inliers", 0) >= 25):
+            edges.append((a, b, r["yaw"], r["rot"], min(r["inliers"], 300)))
+    for (a, b), m in MANUAL.items():
+        edges.append((a, b, m["yaw"], m["rot"], 40))
+    missing = [e for e in verified if e not in MANUAL and a_b(e) not in cache]
+    if missing:
+        sys.exit("ยังไม่ได้เปรียบเทียบคู่: %s — รัน python3 tools/pairs.py window 5 ก่อน" % missing)
+    return edges
 
 
-def unit(b):
-    r = math.radians(b)
-    return np.array([math.sin(r), -math.cos(r)])
+def a_b(e):
+    return e[0] + ">" + e[1]
+
+
+def pick_links(pos, edges, min_sep=35, max_links=6):
+    """เลือกลูกศร: คู่สั้นก่อน ไม่ให้ลูกศรสองอันในจุดเดียวกันชี้ใกล้กันเกิน min_sep องศา"""
+    def bearing(a, b):
+        v = pos[b] - pos[a]
+        return math.degrees(math.atan2(v[0], -v[1]))
+
+    chosen = {n: [] for n in pos}        # n -> [(bearing, other)]
+    order = sorted(edges, key=lambda e: np.linalg.norm(pos[e[1]] - pos[e[0]]))
+
+    def free(a, b):
+        t = bearing(a, b)
+        return len(chosen[a]) < max_links and all(
+            abs(solve_map.wrap(t - u)) >= min_sep for u, _ in chosen[a])
+
+    keep = []
+    for e in order:
+        a, b = e[0], e[1]
+        if free(a, b) and free(b, a):
+            chosen[a].append((bearing(a, b), b))
+            chosen[b].append((bearing(b, a), a))
+            keep.append((a, b))
+    # ให้ทุกจุดเดินถึงกันได้: เติมคู่สั้นที่สุดที่เชื่อมกลุ่มที่แยกกัน
+    parent = {n: n for n in pos}
+
+    def root(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+    for a, b in keep:
+        parent[root(a)] = root(b)
+    for e in order:
+        a, b = e[0], e[1]
+        if root(a) != root(b):
+            parent[root(a)] = root(b)
+            keep.append((a, b))
+    return keep
 
 
 def main():
-    est.WIDTH = 2560
-    edges = list(zip(MAIN, MAIN[1:])) + EXTRA
-    triples = [(MAIN[i], MAIN[i + 2]) for i in range(len(MAIN) - 2)]
-    cache = estimate_pairs([e for e in edges if e not in MANUAL] + triples)
+    edges = load_edges()
+    north, pos, used = solve_map.solve(ALL, edges, ALL[0])
+    # ห้องเป็นกล่อง: หมุนให้ผนังขนานแกน แล้วหมุนอีก 90° ให้ห้องยาวตามแนวนอนของจอ
+    turn = solve_map.manhattan_angle(north, used) + 90
+    R = math.radians(-turn)
+    rot = np.array([[math.cos(R), -math.sin(R)], [math.sin(R), math.cos(R)]])
+    pos = {n: rot @ p for n, p in pos.items()}
+    north = {n: solve_map.wrap(v + turn) for n, v in north.items()}
 
-    def rel(a, b):
-        if (a, b) in MANUAL:
-            return MANUAL[(a, b)]
-        return cache[a + ">" + b]
-
-    # northOffset (n) ไล่ตามเส้นทาง: ทิศเดียวกันในโลก  yaw_b = yaw_a − rot
-    north = {MAIN[0]: 0.0}
-    for a, b in edges:
-        if b not in north:
-            north[b] = north[a] - rel(a, b)["rot"]
-
-    def bearing(a, b):
-        return rel(a, b)["yaw"] - north[a]
-
-    # ระยะก้าวจากสามเหลี่ยม A-B-C  (s1·AB + s2·BC = s3·AC)
-    step = {}
-    for i in range(len(MAIN) - 2):
-        a, b, c = MAIN[i:i + 3]
-        t = cache.get(a + ">" + c, {})
-        if (a, b) in MANUAL or (b, c) in MANUAL or t.get("inliers", 0) < 40 or t.get("cheirality", 0) < 0.85:
-            continue
-        M = np.stack([unit(bearing(b, c)), -unit(t["yaw"] - north[a])], 1)
-        try:
-            s2, s3 = np.linalg.solve(M, -unit(bearing(a, b)))
-        except np.linalg.LinAlgError:
-            continue
-        if 0.25 < s2 < 4 and s3 > 0:
-            step.setdefault((b, c), []).append(s2)   # สัมพัทธ์กับ |AB|
-    length = {(MAIN[0], MAIN[1]): 1.0}
-    for i in range(1, len(MAIN) - 1):
-        a, b, c = MAIN[i - 1], MAIN[i], MAIN[i + 1]
-        prev = length[(a, b)]
-        if (b, c) in MANUAL:
-            length[(b, c)] = MANUAL[(b, c)]["len"]
-        elif (b, c) in step:
-            length[(b, c)] = float(np.clip(prev * step[(b, c)][0], 0.4, 2.5))
-        else:
-            length[(b, c)] = 1.0
-    for e in EXTRA:
-        length.setdefault(e, MANUAL.get(e, {}).get("len", 1.0))
-
-    # จัดให้ระเบียงทางเดินชี้ไปทางขวาของแผนผัง
-    turn = 90 - bearing("199", "201")
-    for k in north:
-        north[k] = ((north[k] - turn + 180) % 360) - 180
-
-    pos = {MAIN[0]: np.zeros(2)}
-    for a, b in list(zip(MAIN, MAIN[1:])) + EXTRA:
-        if b not in pos:
-            pos[b] = pos[a] + length[(a, b)] * unit(bearing(a, b))
     pts = np.array(list(pos.values()))
     lo, hi = pts.min(0), pts.max(0)
-    scale = 88 / max(hi - lo)
-    off = (100 - (hi - lo) * scale) / 2
-    mp = {k: (v - lo) * scale + off for k, v in pos.items()}
+    scale = 92 / max(hi - lo)
+    mp = {k: (v - lo) * scale + 4 for k, v in pos.items()}
+
+    # กรอบห้องจากตำแหน่งจุดถ่าย
+    rooms = []
+    for label, ids, pad in ROOMS:
+        q = np.array([mp[i] for i in ids])
+        (x0, y0), (x1, y1) = q.min(0) - pad, q.max(0) + pad
+        rooms.append({"label": label, "x": round(float(x0), 2), "y": round(float(y0), 2),
+                      "w": round(float(x1 - x0), 2), "h": round(float(y1 - y0), 2)})
 
     # ภาพ
     os.makedirs(OUT_IMG, exist_ok=True)
-    order = MAIN[:]
-    order.insert(order.index("183"), "181")
-    order.insert(order.index("199"), "197")
+    order = ALL
     for n in order:
         out = os.path.join(OUT_IMG, "p%s.jpg" % n)
         if not os.path.exists(out):
@@ -195,15 +222,9 @@ def main():
             print("   ภาพ", out, file=sys.stderr)
 
     links = {n: [] for n in order}
-    for a, b in edges:
-        if (a, b) in EXTRA and (a, b) not in MANUAL:
-            # ทางลัดนอกเส้นทางหลัก: ใช้ทิศที่วัดได้ตรง ๆ แทนการคำนวณจากแผนผัง
-            r = rel(a, b)
-            back = ((r["yaw"] + 180 - r["rot"] + 180) % 360) - 180
-            links[a].append({"to": "p" + b, "yaw": round(r["yaw"], 1)})
-            links[b].append({"to": "p" + a, "yaw": round(back, 1)})
-        else:
-            links[a].append({"to": "p" + b})
+    for a, b in pick_links(pos, used):
+        links[a].append({"to": "p" + b})     # ลิงก์กลับสร้างอัตโนมัติในหน้าเว็บ
+    infos = load_artworks()
 
     count = {}
     scenes = []
@@ -215,9 +236,10 @@ def main():
             "title": title,
             "description": desc,
             "image": "images/panoramas/p%s.jpg" % n,
-            "map": {"x": round(float(mp[n][0]), 1), "y": round(float(mp[n][1]), 1)},
+            "map": {"x": round(float(mp[n][0]), 2), "y": round(float(mp[n][1]), 2)},
             "northOffset": round(north[n], 1),
             "links": links[n],
+            "infos": infos.get(n, []),
         })
     # ใส่ลำดับเมื่อชื่อซ้ำกันในโซน
     seen = {}
@@ -230,8 +252,13 @@ def main():
         "title": "หอพุทธศิลป์",
         "subtitle": "พิพิธภัณฑ์เสมือนจริง 360° · มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย วิทยาเขตแพร่",
         "firstScene": "p" + FIRST,
-        "floorPlan": {"image": None, "rooms": []},
+        "floorPlan": {"image": None, "rooms": rooms},
         "scenes": scenes,
+        "artworks": [{
+            "id": a["id"], "card_no": a["card_no"], "title": a["title"], "title_en": a.get("title_en", ""),
+            "card": "images/artworks/%s.jpg" % a["id"],
+            "placements": [{"pano": p["pano"], "yaw": p["yaw"], "pitch": p["pitch"]} for p in a.get("placements", [])],
+        } for a in artworks()],
     }
     with open(os.path.join(ROOT, "data", "tour.js"), "w") as f:
         f.write("/*\n * ข้อมูลทัวร์ 360° หอพุทธศิลป์ — สร้างโดย tools/build_tour.py\n"
