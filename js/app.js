@@ -248,7 +248,7 @@
       return byId["p" + p.pano] ? byId["p" + p.pano].title : "";
     }).filter(function (t, i, a) { return t && a.indexOf(t) === i; }) : [];
     $("info-where").textContent = (where.length ? "พบได้ที่: " + where.join(", ") : "") +
-      (info.approx ? " (ตำแหน่ง ⓘ โดยประมาณ — ชิ้นงานลักษณะคล้ายกันหลายชิ้น)" : "");
+      (info.approx ? " (ตำแหน่ง ⓘ โดยประมาณ)" : "");
     $("info-card").hidden = false;
   }
   function hideInfo() { $("info-card").hidden = true; }

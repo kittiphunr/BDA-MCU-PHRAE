@@ -200,7 +200,20 @@
   "card_no": 8,
   "title": "เครื่องสูงบูชาพระเจ้าห้าพระองค์",
   "title_en": "The Highest Worshiping",
-  "placements": []
+  "placements": [
+   {
+    "pano": "122",
+    "yaw": 172,
+    "pitch": 4,
+    "source": "manual"
+   },
+   {
+    "pano": "096",
+    "yaw": 152,
+    "pitch": -2,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a09",
@@ -646,14 +659,30 @@
   "card_no": 39,
   "title": "ขันพานทองเหลือง",
   "title_en": "Brass bowl",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": 77,
+    "pitch": -12,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a40",
   "card_no": 40,
   "title": "ตลับเมตรโบราณ",
   "title_en": "Antique meter",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -49,
+    "pitch": -17,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a41",
@@ -754,7 +783,15 @@
   "card_no": 46,
   "title": "ขันหมากและเครื่องเขินล้านนา",
   "title_en": "Lanna Lacquer ware",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -75,
+    "pitch": -7,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a47",
@@ -818,7 +855,15 @@
   "card_no": 51,
   "title": "หมอนไม้ หรือ หมอนนมสาว",
   "title_en": "Wooden Pillow",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": -19,
+    "pitch": -26,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a52",
