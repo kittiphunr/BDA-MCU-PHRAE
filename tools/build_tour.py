@@ -95,6 +95,8 @@ FIRST = "215"
 FIRST_VIEW = {"yaw": -175.8, "pitch": 0}
 
 DOOR = ("194", "195")   # ประตูระหว่างห้องโถงกับระเบียง
+# ลิงก์ที่กำหนดเอง (เพิ่มหลังเลือกลูกศรอัตโนมัติ): เดินจากระเบียง/ทางเข้า เข้าห้องโถงที่มุมแผงพระพิมพ์
+EXTRA_LINKS = [("212", "194"), ("220", "194")]
 
 # คู่ที่ผลคำนวณขัดกับคู่อื่น (มุมหมุนผิด) — ไม่ใช้
 SKIP = {"098>105"}
@@ -323,6 +325,9 @@ def main():
     walks += [tuple(sorted((DOOR[1], n))) for n in near]
     for a, b in pick_links(mp, walks):
         links[a].append({"to": "p" + b})     # ลิงก์กลับสร้างอัตโนมัติในหน้าเว็บ
+    for a, b in EXTRA_LINKS:
+        if a in links and b in links and {"to": "p" + b} not in links[a] and {"to": "p" + a} not in links[b]:
+            links[a].append({"to": "p" + b})
     infos = load_artworks(keep)
 
     count = {}
