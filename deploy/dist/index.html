@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>หอพุทธศิลป์ · ทัวร์เสมือนจริง 360°</title>
+  <meta name="description" content="เยี่ยมชมหอพุทธศิลป์แบบเสมือนจริง 360 องศา เดินชมแต่ละห้องได้แบบ Street View">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@500;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/pannellum/pannellum.css">
+  <link rel="stylesheet" href="css/style.css?v=fa6a01b">
+</head>
+<body>
+  <div id="viewer" aria-label="ภาพ 360 องศา"></div>
+
+  <!-- แถบหัวเรื่อง -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">☸</span>
+      <div>
+        <h1 id="tour-title">หอพุทธศิลป์</h1>
+        <p id="scene-title" class="scene-title"></p>
+      </div>
+    </div>
+    <nav class="tools" aria-label="เครื่องมือ">
+      <button id="btn-list" class="icon-btn" title="รายการจุดชม" aria-label="รายการจุดชม">☰</button>
+      <button id="btn-map" class="icon-btn" title="แผนผัง" aria-label="แผนผัง">◎</button>
+      <button id="btn-rotate" class="icon-btn" title="หมุนอัตโนมัติ" aria-label="หมุนอัตโนมัติ">⟳</button>
+      <button id="btn-share" class="icon-btn" title="คัดลอกลิงก์จุดนี้" aria-label="คัดลอกลิงก์จุดนี้">⤴</button>
+      <button id="btn-full" class="icon-btn" title="เต็มจอ" aria-label="เต็มจอ">⛶</button>
+    </nav>
+  </header>
+
+  <!-- แผนผัง (mini-map) -->
+  <aside id="minimap" class="panel minimap" aria-label="แผนผังอาคาร">
+    <div class="panel-head">
+      <span>แผนผัง</span>
+      <button class="close" data-close="minimap" aria-label="ปิด">×</button>
+    </div>
+    <svg id="map-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+  </aside>
+
+  <!-- รายการจุดชม -->
+  <aside id="scene-list" class="panel scene-list" aria-label="รายการจุดชม" hidden>
+    <div class="panel-head">
+      <span>จุดชมทั้งหมด</span>
+      <button class="close" data-close="scene-list" aria-label="ปิด">×</button>
+    </div>
+    <ol id="scene-items"></ol>
+  </aside>
+
+  <!-- กล่องข้อมูลวัตถุจัดแสดง -->
+  <aside id="info-card" class="info-card" hidden aria-live="polite">
+    <button class="close" data-close="info-card" aria-label="ปิด">×</button>
+    <h2 id="info-title"></h2>
+    <p id="info-text"></p>
+  </aside>
+
+  <!-- คำอธิบายจุดและปุ่มเดิน -->
+  <footer class="bottombar">
+    <p id="scene-desc" class="scene-desc"></p>
+    <button id="btn-forward" class="forward" title="เดินไปข้างหน้า (W)">เดินหน้า ▲</button>
+  </footer>
+
+  <!-- โหมดแก้ไข: ?edit=1 -->
+  <div id="edit-hud" class="edit-hud" hidden></div>
+
+  <!-- หน้าต้อนรับ -->
+  <section id="intro" class="intro">
+    <div class="intro-card">
+      <span class="intro-mark" aria-hidden="true">☸</span>
+      <h2 id="intro-title">หอพุทธศิลป์</h2>
+      <p id="intro-sub"></p>
+      <ul class="intro-help">
+        <li>ลากเมาส์ / นิ้ว เพื่อมองรอบ ๆ</li>
+        <li>คลิก <b>ลูกศรบนพื้น</b> เพื่อเดินไปยังจุดถัดไป</li>
+        <li>คลิกจุดบน <b>แผนผัง</b> หรือ ☰ เพื่อไปยังจุดที่ต้องการ</li>
+      </ul>
+      <button id="btn-start" class="start">เริ่มชมนิทรรศการ</button>
+    </div>
+  </section>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="vendor/pannellum/pannellum.js"></script>
+  <script src="data/tour.js?v=fa6a01b"></script>
+  <script src="js/app.js?v=fa6a01b"></script>
+</body>
+</html>
