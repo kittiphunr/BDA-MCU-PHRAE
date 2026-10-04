@@ -198,6 +198,113 @@ window.TOUR = {
           "title": "ภาพประดิษฐ์ “ตุงผ้าทอสายใยผูกพัน”",
           "subtitle": "Drawing Image – woven tung",
           "card": "images/artworks/a03.jpg"
+        },
+        {
+          "yaw": 8,
+          "pitch": -20,
+          "artwork": "a28",
+          "title": "ปั๊บสา (สมุดข่อย)",
+          "subtitle": "Note Book",
+          "card": "images/artworks/a28.jpg"
+        },
+        {
+          "yaw": 73,
+          "pitch": -12,
+          "artwork": "a41",
+          "title": "กระบอกชงชา",
+          "subtitle": "Tea maker",
+          "card": "images/artworks/a41.jpg"
+        },
+        {
+          "yaw": 70,
+          "pitch": -15,
+          "artwork": "a42",
+          "title": "ถาดทองเหลืองก้นลึก",
+          "subtitle": "Brass tray",
+          "card": "images/artworks/a42.jpg"
+        },
+        {
+          "yaw": 66.5,
+          "pitch": -17,
+          "artwork": "a43",
+          "title": "ครอบกำยาน",
+          "subtitle": "frankincense Covering",
+          "card": "images/artworks/a43.jpg"
+        },
+        {
+          "yaw": 62,
+          "pitch": -18,
+          "artwork": "a44",
+          "title": "เด็งหรือกระดิ่ง",
+          "subtitle": "Bell",
+          "card": "images/artworks/a44.jpg"
+        },
+        {
+          "yaw": -27,
+          "pitch": -20,
+          "artwork": "a45",
+          "title": "ขันหมากและเครื่องเขินล้านนา",
+          "subtitle": "Lanna Lacquer ware",
+          "card": "images/artworks/a45.jpg"
+        },
+        {
+          "yaw": -14,
+          "pitch": -24,
+          "artwork": "a47",
+          "title": "ขันหมากและเครื่องเขินล้านนา",
+          "subtitle": "Lanna Lacquer ware",
+          "card": "images/artworks/a47.jpg",
+          "approx": true
+        },
+        {
+          "yaw": -45,
+          "pitch": -15,
+          "artwork": "a48",
+          "title": "ขันหมากและเครื่องเขินล้านนา",
+          "subtitle": "Lanna Lacquer ware",
+          "card": "images/artworks/a48.jpg"
+        },
+        {
+          "yaw": 41,
+          "pitch": -23,
+          "artwork": "a49",
+          "title": "ทองเหลือง",
+          "subtitle": "Brass bowl",
+          "card": "images/artworks/a49.jpg"
+        },
+        {
+          "yaw": 50,
+          "pitch": -21,
+          "artwork": "a50",
+          "title": "น้ำถุ้ง",
+          "subtitle": "Water Scoop",
+          "card": "images/artworks/a50.jpg"
+        },
+        {
+          "yaw": 27,
+          "pitch": -18,
+          "artwork": "a52",
+          "title": "ถาดร่อนทองคำ",
+          "subtitle": "Gold pan tray",
+          "card": "images/artworks/a52.jpg"
+        },
+        {
+          "yaw": -56,
+          "pitch": -11,
+          "artwork": "a53",
+          "title": "แร้วคอม้า (กับดักคอม้า)",
+          "subtitle": "Horse Snare",
+          "card": "images/artworks/a53.jpg",
+          "approx": true
+        },
+        {
+          "yaw": -61,
+          "pitch": -6,
+          "artwork": "a54",
+          "title": "ม้าหั่นใบยาสูบ",
+          "subtitle": "tobacco turning",
+          "card": "images/artworks/a54.jpg",
+          "approx": true
         }
       ]
     },
@@ -224,6 +331,78 @@ window.TOUR = {
           "title": "ภาพประดิษฐ์ “ตุงผ้าทอสายใยผูกพัน”",
           "subtitle": "Drawing Image – woven tung",
           "card": "images/artworks/a03.jpg"
+        },
+        {
+          "yaw": -126,
+          "pitch": -7,
+          "artwork": "a34",
+          "title": "เปียทอผ้า",
+          "subtitle": "Braid weaving",
+          "card": "images/artworks/a34.jpg"
+        },
+        {
+          "yaw": -136,
+          "pitch": -19,
+          "artwork": "a35",
+          "title": "ฟืมทอผ้า",
+          "subtitle": "Feum weaving",
+          "card": "images/artworks/a35.jpg"
+        },
+        {
+          "yaw": 3,
+          "pitch": -28,
+          "artwork": "a36",
+          "title": "เครื่องเสียงโบราณและแผ่นเสียง",
+          "subtitle": "Antique audio and Recording plate",
+          "card": "images/artworks/a36.jpg"
+        },
+        {
+          "yaw": -55.5,
+          "pitch": -18,
+          "artwork": "a37",
+          "title": "ฮอก",
+          "subtitle": "Wooden bell",
+          "card": "images/artworks/a37.jpg"
+        },
+        {
+          "yaw": -17,
+          "pitch": -25,
+          "artwork": "a38",
+          "title": "ขันพานทองเหลือง",
+          "subtitle": "Brass bowl",
+          "card": "images/artworks/a38.jpg"
+        },
+        {
+          "yaw": -28,
+          "pitch": -23,
+          "artwork": "a41",
+          "title": "กระบอกชงชา",
+          "subtitle": "Tea maker",
+          "card": "images/artworks/a41.jpg"
+        },
+        {
+          "yaw": -40,
+          "pitch": -23,
+          "artwork": "a42",
+          "title": "ถาดทองเหลืองก้นลึก",
+          "subtitle": "Brass tray",
+          "card": "images/artworks/a42.jpg"
+        },
+        {
+          "yaw": -47.5,
+          "pitch": -22,
+          "artwork": "a43",
+          "title": "ครอบกำยาน",
+          "subtitle": "frankincense Covering",
+          "card": "images/artworks/a43.jpg"
+        },
+        {
+          "yaw": -51,
+          "pitch": -20,
+          "artwork": "a44",
+          "title": "เด็งหรือกระดิ่ง",
+          "subtitle": "Bell",
+          "card": "images/artworks/a44.jpg"
         }
       ]
     },
@@ -324,12 +503,60 @@ window.TOUR = {
           "card": "images/artworks/a04.jpg"
         },
         {
+          "yaw": 110,
+          "pitch": -13,
+          "artwork": "a29",
+          "title": "หม้อดินเผา",
+          "subtitle": "Clay pot",
+          "card": "images/artworks/a29.jpg"
+        },
+        {
+          "yaw": 110,
+          "pitch": -3,
+          "artwork": "a30",
+          "title": "รูปปั้นหรือรูปหล่อพิมพ์เกจิอาจารย์",
+          "subtitle": "Simulate of Monks",
+          "card": "images/artworks/a30.jpg"
+        },
+        {
+          "yaw": 110,
+          "pitch": 9,
+          "artwork": "a31",
+          "title": "เจดีย์จำลอง",
+          "subtitle": "Simulate Pagoda",
+          "card": "images/artworks/a31.jpg"
+        },
+        {
+          "yaw": -55,
+          "pitch": -13,
+          "artwork": "a57",
+          "title": "ขันหมากเครื่องเขินล้านนา",
+          "subtitle": "Lanna Lacquer ware",
+          "card": "images/artworks/a57.jpg"
+        },
+        {
           "yaw": -5,
           "pitch": 2,
           "artwork": "a58",
           "title": "รูปปั้นพระมหาโพธิวงศาจารย์",
           "subtitle": "Phramaha Bhodhiwongsajarn Statue",
           "card": "images/artworks/a58.jpg"
+        },
+        {
+          "yaw": -127,
+          "pitch": -13,
+          "artwork": "a59",
+          "title": "เครื่องเคลือบดินเผา",
+          "subtitle": "Porcelain",
+          "card": "images/artworks/a59.jpg"
+        },
+        {
+          "yaw": -127,
+          "pitch": 2,
+          "artwork": "a60",
+          "title": "พระบูชา",
+          "subtitle": "Worshiping Buddha image",
+          "card": "images/artworks/a60.jpg"
         }
       ]
     },
@@ -442,6 +669,14 @@ window.TOUR = {
           "title": "แผ่นยันต์",
           "subtitle": "talisman or fabric",
           "card": "images/artworks/a10.jpg"
+        },
+        {
+          "yaw": 138,
+          "pitch": -14,
+          "artwork": "a27",
+          "title": "ก้างธรรม",
+          "subtitle": "Dhamma Script Hanger",
+          "card": "images/artworks/a27.jpg"
         },
         {
           "yaw": 152,
@@ -587,12 +822,28 @@ window.TOUR = {
       ],
       "infos": [
         {
+          "yaw": 175,
+          "pitch": -8,
+          "artwork": "a20",
+          "title": "พระประจำวันเกิดวันพุธ กลางวัน พระปางอุ้มบาตร",
+          "subtitle": "Wednesday Buddha Image",
+          "card": "images/artworks/a20.jpg"
+        },
+        {
           "yaw": -173.7,
           "pitch": -16.9,
           "artwork": "a22",
           "title": "พระพุทธรูปประจำวันเกิดวันพฤหัสบดี พระปางตรัสรู้หรือปางสมาธิ",
           "subtitle": "Thursday Buddha Image",
           "card": "images/artworks/a22.jpg"
+        },
+        {
+          "yaw": -112,
+          "pitch": -8,
+          "artwork": "a24",
+          "title": "พระประจำวันเกิดวันพุธ (ราหู) ปางป่าเลไลย์",
+          "subtitle": "Wednesday Night Buddha Image (Sitting Style)",
+          "card": "images/artworks/a24.jpg"
         }
       ]
     },
@@ -619,6 +870,15 @@ window.TOUR = {
           "title": "พระประจำวันเกิดวันศุกร์ พระปางรำพึง",
           "subtitle": "Friday Buddha Image",
           "card": "images/artworks/a23.jpg"
+        },
+        {
+          "yaw": -147,
+          "pitch": -7,
+          "artwork": "a25",
+          "title": "พระประจำวันเกิดวันพุธกลางคืน",
+          "subtitle": "Wednesday Night Buddha Image (Sitting Style)",
+          "card": "images/artworks/a25.jpg",
+          "approx": true
         }
       ]
     },
@@ -656,6 +916,22 @@ window.TOUR = {
           "title": "พระประจำวันเกิดวันอังคารปางไสยาสน์",
           "subtitle": "Tuesday Buddha Image",
           "card": "images/artworks/a12.jpg"
+        },
+        {
+          "yaw": 166,
+          "pitch": -5,
+          "artwork": "a18",
+          "title": "พระประจำวันเกิดวันอาทิตย์ปางถวายเนตรแกะสลักไม้",
+          "subtitle": "Saturday Wooden Buddha Image",
+          "card": "images/artworks/a18.jpg"
+        },
+        {
+          "yaw": -178,
+          "pitch": -3,
+          "artwork": "a19",
+          "title": "พระพุทธรูปปางห้ามแก่นจันทร์",
+          "subtitle": "Buddha Image",
+          "card": "images/artworks/a19.jpg"
         }
       ]
     },
@@ -682,6 +958,42 @@ window.TOUR = {
           "title": "ภาพประดิษฐ์ “มนตราแห่งเลขยันต์”",
           "subtitle": "Artificial image “Montra of the number”",
           "card": "images/artworks/a07.jpg"
+        },
+        {
+          "yaw": -72,
+          "pitch": -9,
+          "artwork": "a13",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a13.jpg",
+          "approx": true
+        },
+        {
+          "yaw": -66,
+          "pitch": -11,
+          "artwork": "a15",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a15.jpg",
+          "approx": true
+        },
+        {
+          "yaw": -58,
+          "pitch": -4,
+          "artwork": "a16",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a16.jpg",
+          "approx": true
+        },
+        {
+          "yaw": -33,
+          "pitch": -12,
+          "artwork": "a17",
+          "title": "พระพุทธรูปปางมารวิชัย",
+          "subtitle": "Maravichaya Buddha Image Style",
+          "card": "images/artworks/a17.jpg",
+          "approx": true
         },
         {
           "yaw": 59,
@@ -776,6 +1088,14 @@ window.TOUR = {
           "card": "images/artworks/a01.jpg"
         },
         {
+          "yaw": -35,
+          "pitch": -3,
+          "artwork": "a26",
+          "title": "สุ่มดอกล้านนา",
+          "subtitle": "Lanna flower Bowl",
+          "card": "images/artworks/a26.jpg"
+        },
+        {
           "yaw": 90,
           "pitch": -8,
           "artwork": "a63",
@@ -798,6 +1118,14 @@ window.TOUR = {
           "title": "อูปยอด",
           "subtitle": "Upp",
           "card": "images/artworks/a68.jpg"
+        },
+        {
+          "yaw": 38,
+          "pitch": 0,
+          "artwork": "a69",
+          "title": "เครื่องสูงประกอบยศ",
+          "subtitle": "High-ranking decoration",
+          "card": "images/artworks/a69.jpg"
         }
       ]
     },
@@ -818,8 +1146,24 @@ window.TOUR = {
       ],
       "infos": [
         {
-          "yaw": -178.8,
-          "pitch": -1.2,
+          "yaw": 19,
+          "pitch": -4,
+          "artwork": "a26",
+          "title": "สุ่มดอกล้านนา",
+          "subtitle": "Lanna flower Bowl",
+          "card": "images/artworks/a26.jpg"
+        },
+        {
+          "yaw": -179,
+          "pitch": -2,
+          "artwork": "a66",
+          "title": "พระพุทธรูปปูนปั้น (พระเจ้าทันใจ)",
+          "subtitle": "Stucco Buddha statue (Instant God)",
+          "card": "images/artworks/a66.jpg"
+        },
+        {
+          "yaw": 157,
+          "pitch": -8,
           "artwork": "a67",
           "title": "ปูรณฆฏะ หรือ กุมภะ",
           "subtitle": "Puranakata or Kumar",
@@ -1191,7 +1535,14 @@ window.TOUR = {
       "title": "พระพุทธรูปปางมารวิชัย",
       "title_en": "Maravichaya Buddha Image Style",
       "card": "images/artworks/a13.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "151",
+          "yaw": -72,
+          "pitch": -9,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a14",
@@ -1213,7 +1564,14 @@ window.TOUR = {
       "title": "พระพุทธรูปปางมารวิชัย",
       "title_en": "Maravichaya Buddha Image Style",
       "card": "images/artworks/a15.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "151",
+          "yaw": -66,
+          "pitch": -11,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a16",
@@ -1221,7 +1579,14 @@ window.TOUR = {
       "title": "พระพุทธรูปปางมารวิชัย",
       "title_en": "Maravichaya Buddha Image Style",
       "card": "images/artworks/a16.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "151",
+          "yaw": -58,
+          "pitch": -4,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a17",
@@ -1229,7 +1594,14 @@ window.TOUR = {
       "title": "พระพุทธรูปปางมารวิชัย",
       "title_en": "Maravichaya Buddha Image Style",
       "card": "images/artworks/a17.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "151",
+          "yaw": -33,
+          "pitch": -12,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a18",
@@ -1237,7 +1609,13 @@ window.TOUR = {
       "title": "พระประจำวันเกิดวันอาทิตย์ปางถวายเนตรแกะสลักไม้",
       "title_en": "Saturday Wooden Buddha Image",
       "card": "images/artworks/a18.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "145",
+          "yaw": 166,
+          "pitch": -5
+        }
+      ]
     },
     {
       "id": "a19",
@@ -1245,7 +1623,13 @@ window.TOUR = {
       "title": "พระพุทธรูปปางห้ามแก่นจันทร์",
       "title_en": "Buddha Image",
       "card": "images/artworks/a19.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "145",
+          "yaw": -178,
+          "pitch": -3
+        }
+      ]
     },
     {
       "id": "a20",
@@ -1253,7 +1637,13 @@ window.TOUR = {
       "title": "พระประจำวันเกิดวันพุธ กลางวัน พระปางอุ้มบาตร",
       "title_en": "Wednesday Buddha Image",
       "card": "images/artworks/a20.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "136",
+          "yaw": 175,
+          "pitch": -8
+        }
+      ]
     },
     {
       "id": "a21",
@@ -1303,7 +1693,13 @@ window.TOUR = {
       "title": "พระประจำวันเกิดวันพุธ (ราหู) ปางป่าเลไลย์",
       "title_en": "Wednesday Night Buddha Image (Sitting Style)",
       "card": "images/artworks/a24.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "136",
+          "yaw": -112,
+          "pitch": -8
+        }
+      ]
     },
     {
       "id": "a25",
@@ -1311,7 +1707,14 @@ window.TOUR = {
       "title": "พระประจำวันเกิดวันพุธกลางคืน",
       "title_en": "Wednesday Night Buddha Image (Sitting Style)",
       "card": "images/artworks/a25.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "143",
+          "yaw": -147,
+          "pitch": -7,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a26",
@@ -1319,7 +1722,18 @@ window.TOUR = {
       "title": "สุ่มดอกล้านนา",
       "title_en": "Lanna flower Bowl",
       "card": "images/artworks/a26.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "177",
+          "yaw": -35,
+          "pitch": -3
+        },
+        {
+          "pano": "183",
+          "yaw": 19,
+          "pitch": -4
+        }
+      ]
     },
     {
       "id": "a27",
@@ -1327,7 +1741,13 @@ window.TOUR = {
       "title": "ก้างธรรม",
       "title_en": "Dhamma Script Hanger",
       "card": "images/artworks/a27.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "096",
+          "yaw": 138,
+          "pitch": -14
+        }
+      ]
     },
     {
       "id": "a28",
@@ -1335,7 +1755,13 @@ window.TOUR = {
       "title": "ปั๊บสา (สมุดข่อย)",
       "title_en": "Note Book",
       "card": "images/artworks/a28.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": 8,
+          "pitch": -20
+        }
+      ]
     },
     {
       "id": "a29",
@@ -1343,7 +1769,13 @@ window.TOUR = {
       "title": "หม้อดินเผา",
       "title_en": "Clay pot",
       "card": "images/artworks/a29.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "072",
+          "yaw": 110,
+          "pitch": -13
+        }
+      ]
     },
     {
       "id": "a30",
@@ -1351,7 +1783,13 @@ window.TOUR = {
       "title": "รูปปั้นหรือรูปหล่อพิมพ์เกจิอาจารย์",
       "title_en": "Simulate of Monks",
       "card": "images/artworks/a30.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "072",
+          "yaw": 110,
+          "pitch": -3
+        }
+      ]
     },
     {
       "id": "a31",
@@ -1359,7 +1797,13 @@ window.TOUR = {
       "title": "เจดีย์จำลอง",
       "title_en": "Simulate Pagoda",
       "card": "images/artworks/a31.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "072",
+          "yaw": 110,
+          "pitch": 9
+        }
+      ]
     },
     {
       "id": "a32",
@@ -1395,7 +1839,13 @@ window.TOUR = {
       "title": "เปียทอผ้า",
       "title_en": "Braid weaving",
       "card": "images/artworks/a34.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -126,
+          "pitch": -7
+        }
+      ]
     },
     {
       "id": "a35",
@@ -1403,7 +1853,13 @@ window.TOUR = {
       "title": "ฟืมทอผ้า",
       "title_en": "Feum weaving",
       "card": "images/artworks/a35.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -136,
+          "pitch": -19
+        }
+      ]
     },
     {
       "id": "a36",
@@ -1411,7 +1867,13 @@ window.TOUR = {
       "title": "เครื่องเสียงโบราณและแผ่นเสียง",
       "title_en": "Antique audio and Recording plate",
       "card": "images/artworks/a36.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": 3,
+          "pitch": -28
+        }
+      ]
     },
     {
       "id": "a37",
@@ -1419,7 +1881,13 @@ window.TOUR = {
       "title": "ฮอก",
       "title_en": "Wooden bell",
       "card": "images/artworks/a37.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -55.5,
+          "pitch": -18
+        }
+      ]
     },
     {
       "id": "a38",
@@ -1427,7 +1895,13 @@ window.TOUR = {
       "title": "ขันพานทองเหลือง",
       "title_en": "Brass bowl",
       "card": "images/artworks/a38.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -17,
+          "pitch": -25
+        }
+      ]
     },
     {
       "id": "a39",
@@ -1451,7 +1925,18 @@ window.TOUR = {
       "title": "กระบอกชงชา",
       "title_en": "Tea maker",
       "card": "images/artworks/a41.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -28,
+          "pitch": -23
+        },
+        {
+          "pano": "048",
+          "yaw": 73,
+          "pitch": -12
+        }
+      ]
     },
     {
       "id": "a42",
@@ -1459,7 +1944,18 @@ window.TOUR = {
       "title": "ถาดทองเหลืองก้นลึก",
       "title_en": "Brass tray",
       "card": "images/artworks/a42.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -40,
+          "pitch": -23
+        },
+        {
+          "pano": "048",
+          "yaw": 70,
+          "pitch": -15
+        }
+      ]
     },
     {
       "id": "a43",
@@ -1467,7 +1963,18 @@ window.TOUR = {
       "title": "ครอบกำยาน",
       "title_en": "frankincense Covering",
       "card": "images/artworks/a43.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -47.5,
+          "pitch": -22
+        },
+        {
+          "pano": "048",
+          "yaw": 66.5,
+          "pitch": -17
+        }
+      ]
     },
     {
       "id": "a44",
@@ -1475,7 +1982,18 @@ window.TOUR = {
       "title": "เด็งหรือกระดิ่ง",
       "title_en": "Bell",
       "card": "images/artworks/a44.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "053",
+          "yaw": -51,
+          "pitch": -20
+        },
+        {
+          "pano": "048",
+          "yaw": 62,
+          "pitch": -18
+        }
+      ]
     },
     {
       "id": "a45",
@@ -1483,7 +2001,13 @@ window.TOUR = {
       "title": "ขันหมากและเครื่องเขินล้านนา",
       "title_en": "Lanna Lacquer ware",
       "card": "images/artworks/a45.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": -27,
+          "pitch": -20
+        }
+      ]
     },
     {
       "id": "a46",
@@ -1499,7 +2023,14 @@ window.TOUR = {
       "title": "ขันหมากและเครื่องเขินล้านนา",
       "title_en": "Lanna Lacquer ware",
       "card": "images/artworks/a47.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": -14,
+          "pitch": -24,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a48",
@@ -1507,7 +2038,13 @@ window.TOUR = {
       "title": "ขันหมากและเครื่องเขินล้านนา",
       "title_en": "Lanna Lacquer ware",
       "card": "images/artworks/a48.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": -45,
+          "pitch": -15
+        }
+      ]
     },
     {
       "id": "a49",
@@ -1515,7 +2052,13 @@ window.TOUR = {
       "title": "ทองเหลือง",
       "title_en": "Brass bowl",
       "card": "images/artworks/a49.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": 41,
+          "pitch": -23
+        }
+      ]
     },
     {
       "id": "a50",
@@ -1523,7 +2066,13 @@ window.TOUR = {
       "title": "น้ำถุ้ง",
       "title_en": "Water Scoop",
       "card": "images/artworks/a50.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": 50,
+          "pitch": -21
+        }
+      ]
     },
     {
       "id": "a51",
@@ -1539,7 +2088,13 @@ window.TOUR = {
       "title": "ถาดร่อนทองคำ",
       "title_en": "Gold pan tray",
       "card": "images/artworks/a52.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": 27,
+          "pitch": -18
+        }
+      ]
     },
     {
       "id": "a53",
@@ -1547,7 +2102,14 @@ window.TOUR = {
       "title": "แร้วคอม้า (กับดักคอม้า)",
       "title_en": "Horse Snare",
       "card": "images/artworks/a53.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": -56,
+          "pitch": -11,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a54",
@@ -1555,7 +2117,14 @@ window.TOUR = {
       "title": "ม้าหั่นใบยาสูบ",
       "title_en": "tobacco turning",
       "card": "images/artworks/a54.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "048",
+          "yaw": -61,
+          "pitch": -6,
+          "approx": true
+        }
+      ]
     },
     {
       "id": "a55",
@@ -1591,7 +2160,13 @@ window.TOUR = {
       "title": "ขันหมากเครื่องเขินล้านนา",
       "title_en": "Lanna Lacquer ware",
       "card": "images/artworks/a57.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "072",
+          "yaw": -55,
+          "pitch": -13
+        }
+      ]
     },
     {
       "id": "a58",
@@ -1613,7 +2188,13 @@ window.TOUR = {
       "title": "เครื่องเคลือบดินเผา",
       "title_en": "Porcelain",
       "card": "images/artworks/a59.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "072",
+          "yaw": -127,
+          "pitch": -13
+        }
+      ]
     },
     {
       "id": "a60",
@@ -1621,7 +2202,13 @@ window.TOUR = {
       "title": "พระบูชา",
       "title_en": "Worshiping Buddha image",
       "card": "images/artworks/a60.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "072",
+          "yaw": -127,
+          "pitch": 2
+        }
+      ]
     },
     {
       "id": "a61",
@@ -1714,7 +2301,13 @@ window.TOUR = {
       "title": "พระพุทธรูปปูนปั้น (พระเจ้าทันใจ)",
       "title_en": "Stucco Buddha statue (Instant God)",
       "card": "images/artworks/a66.jpg",
-      "placements": []
+      "placements": [
+        {
+          "pano": "183",
+          "yaw": -179,
+          "pitch": -2
+        }
+      ]
     },
     {
       "id": "a67",
@@ -1725,8 +2318,8 @@ window.TOUR = {
       "placements": [
         {
           "pano": "183",
-          "yaw": -178.8,
-          "pitch": -1.2
+          "yaw": 157,
+          "pitch": -8
         }
       ]
     },
@@ -1755,6 +2348,11 @@ window.TOUR = {
           "pano": "183",
           "yaw": -110,
           "pitch": 5
+        },
+        {
+          "pano": "177",
+          "yaw": 38,
+          "pitch": 0
         }
       ]
     },

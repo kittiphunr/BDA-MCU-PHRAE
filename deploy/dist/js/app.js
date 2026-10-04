@@ -240,7 +240,8 @@
     var where = art && art.placements.length ? art.placements.map(function (p) {
       return byId["p" + p.pano] ? byId["p" + p.pano].title : "";
     }).filter(function (t, i, a) { return t && a.indexOf(t) === i; }) : [];
-    $("info-where").textContent = where.length ? "พบได้ที่: " + where.join(", ") : "";
+    $("info-where").textContent = (where.length ? "พบได้ที่: " + where.join(", ") : "") +
+      (info.approx ? " (ตำแหน่ง ⓘ โดยประมาณ — ชิ้นงานลักษณะคล้ายกันหลายชิ้น)" : "");
     $("info-card").hidden = false;
   }
   function hideInfo() { $("info-card").hidden = true; }
@@ -252,7 +253,8 @@
   var pendingInfo = null;
 
   function artInfo(a) {
-    return { title: a.title, subtitle: a.title_en, card: a.card, artwork: a.id };
+    return { title: a.title, subtitle: a.title_en, card: a.card, artwork: a.id,
+             approx: a.placements.some(function (p) { return p.approx; }) };
   }
 
   // ไปยังภาพ 360° ที่เห็นงานชิ้นนี้ชัดที่สุด หันกล้องไปที่วัตถุ แล้วเปิดข้อมูล

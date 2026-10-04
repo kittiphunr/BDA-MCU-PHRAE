@@ -263,7 +263,15 @@
   "card_no": 13,
   "title": "พระพุทธรูปปางมารวิชัย",
   "title_en": "Maravichaya Buddha Image Style",
-  "placements": []
+  "placements": [
+   {
+    "pano": "151",
+    "yaw": -72,
+    "pitch": -9,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a14",
@@ -284,42 +292,87 @@
   "card_no": 15,
   "title": "พระพุทธรูปปางมารวิชัย",
   "title_en": "Maravichaya Buddha Image Style",
-  "placements": []
+  "placements": [
+   {
+    "pano": "151",
+    "yaw": -66,
+    "pitch": -11,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a16",
   "card_no": 16,
   "title": "พระพุทธรูปปางมารวิชัย",
   "title_en": "Maravichaya Buddha Image Style",
-  "placements": []
+  "placements": [
+   {
+    "pano": "151",
+    "yaw": -58,
+    "pitch": -4,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a17",
   "card_no": 17,
   "title": "พระพุทธรูปปางมารวิชัย",
   "title_en": "Maravichaya Buddha Image Style",
-  "placements": []
+  "placements": [
+   {
+    "pano": "151",
+    "yaw": -33,
+    "pitch": -12,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a18",
   "card_no": 18,
   "title": "พระประจำวันเกิดวันอาทิตย์ปางถวายเนตรแกะสลักไม้",
   "title_en": "Saturday Wooden Buddha Image",
-  "placements": []
+  "placements": [
+   {
+    "pano": "145",
+    "yaw": 166,
+    "pitch": -5,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a19",
   "card_no": 19,
   "title": "พระพุทธรูปปางห้ามแก่นจันทร์",
   "title_en": "Buddha Image",
-  "placements": []
+  "placements": [
+   {
+    "pano": "145",
+    "yaw": -178,
+    "pitch": -3,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a20",
   "card_no": 20,
   "title": "พระประจำวันเกิดวันพุธ กลางวัน พระปางอุ้มบาตร",
   "title_en": "Wednesday Buddha Image",
-  "placements": []
+  "placements": [
+   {
+    "pano": "136",
+    "yaw": 175,
+    "pitch": -8,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a21",
@@ -370,56 +423,119 @@
   "card_no": 24,
   "title": "พระประจำวันเกิดวันพุธ (ราหู) ปางป่าเลไลย์",
   "title_en": "Wednesday Night Buddha Image (Sitting Style)",
-  "placements": []
+  "placements": [
+   {
+    "pano": "136",
+    "yaw": -112,
+    "pitch": -8,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a25",
   "card_no": 25,
   "title": "พระประจำวันเกิดวันพุธกลางคืน",
   "title_en": "Wednesday Night Buddha Image (Sitting Style)",
-  "placements": []
+  "placements": [
+   {
+    "pano": "143",
+    "yaw": -147,
+    "pitch": -7,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a26",
   "card_no": 26,
   "title": "สุ่มดอกล้านนา",
   "title_en": "Lanna flower Bowl",
-  "placements": []
+  "placements": [
+   {
+    "pano": "177",
+    "yaw": -35,
+    "pitch": -3,
+    "source": "manual"
+   },
+   {
+    "pano": "183",
+    "yaw": 19,
+    "pitch": -4,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a27",
   "card_no": 27,
   "title": "ก้างธรรม",
   "title_en": "Dhamma Script Hanger",
-  "placements": []
+  "placements": [
+   {
+    "pano": "096",
+    "yaw": 138,
+    "pitch": -14,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a28",
   "card_no": 28,
   "title": "ปั๊บสา (สมุดข่อย)",
   "title_en": "Note Book",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": 8,
+    "pitch": -20,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a29",
   "card_no": 29,
   "title": "หม้อดินเผา",
   "title_en": "Clay pot",
-  "placements": []
+  "placements": [
+   {
+    "pano": "072",
+    "yaw": 110,
+    "pitch": -13,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a30",
   "card_no": 30,
   "title": "รูปปั้นหรือรูปหล่อพิมพ์เกจิอาจารย์",
   "title_en": "Simulate of Monks",
-  "placements": []
+  "placements": [
+   {
+    "pano": "072",
+    "yaw": 110,
+    "pitch": -3,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a31",
   "card_no": 31,
   "title": "เจดีย์จำลอง",
   "title_en": "Simulate Pagoda",
-  "placements": []
+  "placements": [
+   {
+    "pano": "072",
+    "yaw": 110,
+    "pitch": 9,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a32",
@@ -460,35 +576,70 @@
   "card_no": 34,
   "title": "เปียทอผ้า",
   "title_en": "Braid weaving",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -126,
+    "pitch": -7,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a35",
   "card_no": 35,
   "title": "ฟืมทอผ้า",
   "title_en": "Feum weaving",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -136,
+    "pitch": -19,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a36",
   "card_no": 36,
   "title": "เครื่องเสียงโบราณและแผ่นเสียง",
   "title_en": "Antique audio and Recording plate",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": 3,
+    "pitch": -28,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a37",
   "card_no": 37,
   "title": "ฮอก",
   "title_en": "Wooden bell",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -55.5,
+    "pitch": -18,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a38",
   "card_no": 38,
   "title": "ขันพานทองเหลือง",
   "title_en": "Brass bowl",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -17,
+    "pitch": -25,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a39",
@@ -509,35 +660,94 @@
   "card_no": 41,
   "title": "กระบอกชงชา",
   "title_en": "Tea maker",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -28,
+    "pitch": -23,
+    "source": "manual"
+   },
+   {
+    "pano": "048",
+    "yaw": 73,
+    "pitch": -12,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a42",
   "card_no": 42,
   "title": "ถาดทองเหลืองก้นลึก",
   "title_en": "Brass tray",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -40,
+    "pitch": -23,
+    "source": "manual"
+   },
+   {
+    "pano": "048",
+    "yaw": 70,
+    "pitch": -15,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a43",
   "card_no": 43,
   "title": "ครอบกำยาน",
   "title_en": "frankincense Covering",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -47.5,
+    "pitch": -22,
+    "source": "manual"
+   },
+   {
+    "pano": "048",
+    "yaw": 66.5,
+    "pitch": -17,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a44",
   "card_no": 44,
   "title": "เด็งหรือกระดิ่ง",
   "title_en": "Bell",
-  "placements": []
+  "placements": [
+   {
+    "pano": "053",
+    "yaw": -51,
+    "pitch": -20,
+    "source": "manual"
+   },
+   {
+    "pano": "048",
+    "yaw": 62,
+    "pitch": -18,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a45",
   "card_no": 45,
   "title": "ขันหมากและเครื่องเขินล้านนา",
   "title_en": "Lanna Lacquer ware",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": -27,
+    "pitch": -20,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a46",
@@ -551,28 +761,57 @@
   "card_no": 47,
   "title": "ขันหมากและเครื่องเขินล้านนา",
   "title_en": "Lanna Lacquer ware",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": -14,
+    "pitch": -24,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a48",
   "card_no": 48,
   "title": "ขันหมากและเครื่องเขินล้านนา",
   "title_en": "Lanna Lacquer ware",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": -45,
+    "pitch": -15,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a49",
   "card_no": 49,
   "title": "ทองเหลือง",
   "title_en": "Brass bowl",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": 41,
+    "pitch": -23,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a50",
   "card_no": 50,
   "title": "น้ำถุ้ง",
   "title_en": "Water Scoop",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": 50,
+    "pitch": -21,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a51",
@@ -586,21 +825,44 @@
   "card_no": 52,
   "title": "ถาดร่อนทองคำ",
   "title_en": "Gold pan tray",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": 27,
+    "pitch": -18,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a53",
   "card_no": 53,
   "title": "แร้วคอม้า (กับดักคอม้า)",
   "title_en": "Horse Snare",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": -56,
+    "pitch": -11,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a54",
   "card_no": 54,
   "title": "ม้าหั่นใบยาสูบ",
   "title_en": "tobacco turning",
-  "placements": []
+  "placements": [
+   {
+    "pano": "048",
+    "yaw": -61,
+    "pitch": -6,
+    "source": "manual",
+    "approx": true
+   }
+  ]
  },
  {
   "id": "a55",
@@ -647,7 +909,14 @@
   "card_no": 57,
   "title": "ขันหมากเครื่องเขินล้านนา",
   "title_en": "Lanna Lacquer ware",
-  "placements": []
+  "placements": [
+   {
+    "pano": "072",
+    "yaw": -55,
+    "pitch": -13,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a58",
@@ -668,14 +937,28 @@
   "card_no": 59,
   "title": "เครื่องเคลือบดินเผา",
   "title_en": "Porcelain",
-  "placements": []
+  "placements": [
+   {
+    "pano": "072",
+    "yaw": -127,
+    "pitch": -13,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a60",
   "card_no": 60,
   "title": "พระบูชา",
   "title_en": "Worshiping Buddha image",
-  "placements": []
+  "placements": [
+   {
+    "pano": "072",
+    "yaw": -127,
+    "pitch": 2,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a61",
@@ -770,7 +1053,14 @@
   "card_no": 66,
   "title": "พระพุทธรูปปูนปั้น (พระเจ้าทันใจ)",
   "title_en": "Stucco Buddha statue (Instant God)",
-  "placements": []
+  "placements": [
+   {
+    "pano": "183",
+    "yaw": -179,
+    "pitch": -2,
+    "source": "manual"
+   }
+  ]
  },
  {
   "id": "a67",
@@ -780,17 +1070,9 @@
   "placements": [
    {
     "pano": "183",
-    "yaw": -178.8,
-    "pitch": -1.2,
-    "source": "auto",
-    "inliers": 42
-   },
-   {
-    "pano": "189",
-    "yaw": -175.3,
-    "pitch": -0.2,
-    "source": "auto",
-    "inliers": 32
+    "yaw": 157,
+    "pitch": -8,
+    "source": "manual"
    }
   ]
  },
@@ -818,6 +1100,12 @@
     "pano": "183",
     "yaw": -110,
     "pitch": 5,
+    "source": "manual"
+   },
+   {
+    "pano": "177",
+    "yaw": 38,
+    "pitch": 0,
     "source": "manual"
    }
   ]

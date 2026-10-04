@@ -120,7 +120,7 @@ def load_artworks(keep=None):
                 "yaw": p["yaw"], "pitch": p["pitch"], "artwork": a["id"],
                 "title": a["title"], "subtitle": a.get("title_en", ""),
                 "card": "images/artworks/%s.jpg" % a["id"],
-            })
+            } | ({"approx": True} if p.get("approx") else {}))
     return out
 
 
@@ -333,6 +333,7 @@ def main():
             "id": a["id"], "card_no": a["card_no"], "title": a["title"], "title_en": a.get("title_en", ""),
             "card": "images/artworks/%s.jpg" % a["id"],
             "placements": [{"pano": p["pano"], "yaw": p["yaw"], "pitch": p["pitch"]}
+                           | ({"approx": True} if p.get("approx") else {})
                            for p in a.get("placements", []) if p["pano"] in keep],
         } for a in artworks()],
     }
