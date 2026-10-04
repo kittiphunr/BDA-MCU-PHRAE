@@ -22,19 +22,20 @@ function w(x, y) { return [x * S, y * S]; }      // พิกัดแผนผ�
 function projectedMaterial(atlas, roomIndex) {
   const cams = T.scenes.filter((s) => M.atlas.cells[s.id]);
   const n = cams.length;
-  const camPos = [], camNorth = [], camCell = [], camRoom = [];
+  const camPos = [], camNorth = [], camCell = [], camRoom = [], camMirror = [];
   cams.forEach((s) => {
     const [x, z] = w(s.map.x, s.map.y);
     camPos.push(new THREE.Vector3(x, 1, z));
     camNorth.push(s.northOffset);
     camCell.push(new THREE.Vector2(...M.atlas.cells[s.id]));
     camRoom.push(roomOf(s));
+    camMirror.push(s.mirror ? 1 : 0);
   });
   return new THREE.ShaderMaterial({
     uniforms: {
       atlas: { value: atlas },
       camPos: { value: camPos }, camNorth: { value: camNorth },
-      camCell: { value: camCell }, camRoom: { value: camRoom },
+      camCell: { value: camCell }, camRoom: { value: camRoom }, camMirror: { value: camMirror },
       room: { value: roomIndex },
       grid: { value: new THREE.Vector2(M.atlas.cols, M.atlas.rows) },
       dim: { value: 1.0 },
@@ -53,13 +54,15 @@ function projectedMaterial(atlas, roomIndex) {
       uniform float camNorth[N];
       uniform vec2 camCell[N];
       uniform float camRoom[N];
+      uniform float camMirror[N];
       uniform float room;
       uniform vec2 grid;
       uniform float dim;
       varying vec3 vW;
       vec3 sampleCam(int i) {
         vec3 d = vW - camPos[i];
-        float yaw = degrees(atan(d.x, -d.z)) + camNorth[i];
+        float b = degrees(atan(d.x, -d.z));
+        float yaw = camMirror[i] > 0.5 ? camNorth[i] - b : b + camNorth[i];
         float pitch = degrees(atan(d.y, length(d.xz)));
         float u = fract((yaw + 180.0) / 360.0);
         float v = clamp((90.0 - pitch) / 180.0, 0.002, 0.998);
@@ -156,7 +159,7 @@ function hitRoom(s, yaw, pitch) {
   const r = M.rooms[roomOf(s)];
   const [x0, z0] = w(r.x, r.y), [x1, z1] = w(r.x + r.w, r.y + r.h);
   const [cx, cz] = w(s.map.x, s.map.y);
-  const b = THREE.MathUtils.degToRad(yaw - s.northOffset), p = THREE.MathUtils.degToRad(pitch);
+  const b = THREE.MathUtils.degToRad(s.mirror ? s.northOffset - yaw : yaw - s.northOffset), p = THREE.MathUtils.degToRad(pitch);
   const d = new THREE.Vector3(Math.cos(p) * Math.sin(b), Math.sin(p), -Math.cos(p) * Math.cos(b));
   const o = new THREE.Vector3(cx, 1, cz);
   let t = Infinity;
@@ -185,6 +188,24 @@ function addArtworks() {
   });
 }
 
+// ลูกศรทิศเหนือบนพื้น ข้างมุมห้อง (ตามเข็มทิศใน data/tour.js)
+function addNorth() {
+  const C = T.compass;
+  if (!C) return;
+  const r = M.rooms[0];
+  const [x0, z0] = w(r.x, r.y), [, z1] = w(r.x + r.w, r.y + r.h);
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 0.9); shape.lineTo(0.35, -0.5); shape.lineTo(0, -0.25); shape.lineTo(-0.35, -0.5); shape.closePath();
+  const arrow = new THREE.Mesh(new THREE.ShapeGeometry(shape),
+    new THREE.MeshBasicMaterial({ color: 0xff6b5b, side: THREE.DoubleSide }));
+  arrow.rotation.x = -Math.PI / 2;                                  // วางราบบนพื้น ปลายชี้ −Z (ด้านบนแผนผัง)
+  const g = new THREE.Group();
+  g.add(arrow);
+  g.rotation.y = THREE.MathUtils.degToRad(C.mapUpAzimuth);          // ทิศเหนืออยู่ที่ bearing −mapUpAzimuth
+  g.position.set(x0 - 1.4, 0.02, (z0 + z1) / 2);
+  scene.add(g);
+}
+
 /* ---------- เริ่ม / วนวาด ---------- */
 
 async function build() {
@@ -205,6 +226,7 @@ async function build() {
   M.rooms.forEach((r, i) => addRoom(r, i, atlas));
   addPins();
   addArtworks();
+  addNorth();
 
   // มองจากมุมเฉียงด้านบน ให้เห็นทั้งอาคาร
   const all = new THREE.Box3();

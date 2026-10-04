@@ -545,3 +545,34 @@ button { font: inherit; color: inherit; }
   .model3d-head h2 { font-size: 16px; }
   .model3d-head p { font-size: 12px; }
 }
+
+/* ---------- เข็มทิศ ---------- */
+.compass {
+  position: fixed;
+  z-index: 9;
+  right: 16px; top: 76px;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 6px 6px 4px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  cursor: pointer;
+}
+.compass:hover, .compass:focus-visible { border-color: var(--gold); outline: none; }
+.compass svg { width: 64px; height: 64px; display: block; }
+.compass .ring { fill: rgba(0, 0, 0, .35); stroke: var(--gold); stroke-width: 2; }
+.compass .needle-n { fill: #c0392b; }
+.compass .needle-s { fill: #e8e0cc; }
+.compass .hub { fill: var(--gold); }
+.compass .mark { fill: var(--gold-soft); }
+.compass text { font: 700 11px var(--font); text-anchor: middle; fill: var(--muted); }
+.compass text.n { fill: #ff6b5b; font-size: 12px; }
+#compass-rose { transition: transform .08s linear; }
+.compass-text { font-size: 11px; color: var(--text); white-space: nowrap; }
+#map-svg .map-north path { fill: #ff6b5b; }
+#map-svg .map-north text { fill: #ff6b5b; font: 700 3px var(--font); text-anchor: middle; }
+@media (max-width: 720px) {
+  .compass { top: 66px; padding: 4px 4px 2px; }
+  .compass svg { width: 48px; height: 48px; }
+  .compass-text { font-size: 10px; }
+}

@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon" href="images/logo/apple-touch-icon.png">
   <link rel="preload" as="image" href="images/logo/mcu-logo.png">
   <link rel="stylesheet" href="vendor/pannellum/pannellum.css">
-  <link rel="stylesheet" href="css/style.css?v=5354ddf">
+  <link rel="stylesheet" href="css/style.css?v=c451b32">
 </head>
 <body>
   <!-- หน้าโหลด: แสดงจนภาพ 360° แรกโหลดเสร็จ -->
@@ -49,6 +49,25 @@
       <button id="btn-full" class="icon-btn" title="เต็มจอ" aria-label="เต็มจอ">⛶</button>
     </nav>
   </header>
+
+  <!-- เข็มทิศ -->
+  <button id="compass" class="compass" type="button" hidden
+          title="เข็มทิศ — คลิกเพื่อหันไปทางทิศเหนือ" aria-label="เข็มทิศ คลิกเพื่อหันไปทางทิศเหนือ">
+    <svg viewBox="-50 -50 100 100" aria-hidden="true">
+      <circle r="47" class="ring"/>
+      <g id="compass-rose">
+        <path d="M0 -40 L7 0 L0 40 L-7 0 Z" class="needle-s"/>
+        <path d="M0 -40 L7 0 L-7 0 Z" class="needle-n"/>
+        <text y="-28" class="n">N</text>
+        <text x="31" y="4" class="t">E</text>
+        <text y="36" class="t">S</text>
+        <text x="-31" y="4" class="t">W</text>
+      </g>
+      <circle r="4" class="hub"/>
+      <path d="M0 -50 L5 -42 L-5 -42 Z" class="mark"/>
+    </svg>
+    <span id="compass-text" class="compass-text"></span>
+  </button>
 
   <!-- แผนผัง (mini-map) -->
   <aside id="minimap" class="panel minimap" aria-label="แผนผังอาคาร">
@@ -133,9 +152,9 @@
   <div id="toast" class="toast" role="status"></div>
 
   <script src="vendor/pannellum/pannellum.js"></script>
-  <script src="data/tour.js?v=5354ddf"></script>
-  <script src="js/app.js?v=5354ddf"></script>
+  <script src="data/tour.js?v=c451b32"></script>
+  <script src="js/app.js?v=c451b32"></script>
   <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js" } }</script>
-  <script type="module" src="js/model3d.js?v=5354ddf"></script>
+  <script type="module" src="js/model3d.js?v=c451b32"></script>
 </body>
 </html>
