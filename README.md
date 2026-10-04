@@ -23,7 +23,8 @@ python3 -m http.server 8000
 # แล้วเปิด http://localhost:8000
 ```
 
-หรืออัปโหลดทั้งโฟลเดอร์ขึ้น GitHub Pages / โฮสติ้งใดก็ได้ (เป็นเว็บ static ล้วน)
+ขึ้นเซิร์ฟเวอร์จริง (cPanel / Nginx / Docker / GitHub Pages) ดูขั้นตอนใน [`deploy/README.md`](deploy/README.md)
+— `bash deploy/build.sh` จะรวมเฉพาะไฟล์ที่เว็บใช้ (~37 MB ไม่รวม `Asset/`) ไว้ใน `deploy/dist/`
 
 ## ภาพ 360° ที่ใช้
 
