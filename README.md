@@ -100,6 +100,7 @@ tools/solve_map.py         คำนวณแผนผังทั้งหม�
 tools/locate_artworks.py   หาตำแหน่งงานศิลปะจากภาพในป้ายข้อมูล
 tools/artworks.json        ชื่อ + ตำแหน่งงานศิลปะ 70 ชิ้น (แก้ไฟล์นี้เพื่อเพิ่ม/ย้ายจุด ⓘ)
 images/artworks/           ภาพป้ายข้อมูลงานศิลปะ
+images/logo/               ตราสัญลักษณ์ มจร (หัวเว็บ, favicon, หน้าโหลด) จาก Asset/cropped-*mcu-logo*
 tools/estimate_links.py    คำนวณทิศเดิน/มุมหมุนระหว่างภาพ 360° สองภาพ
 tools/links-cache.json     ผลคำนวณที่เก็บไว้
 ```
