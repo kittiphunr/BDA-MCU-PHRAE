@@ -26,8 +26,15 @@
   }
 
   // แปลงทิศบนแผนผังเป็น yaw ในภาพของ scene และกลับกัน
-  function bearingToYaw(scene, bearing) { return norm(bearing + (scene.northOffset || 0)); }
-  function yawToBearing(scene, yaw) { return norm(yaw - (scene.northOffset || 0)); }
+  // scene.mirror: ภาพที่วางบนแผนผังแบบสะท้อน (ระเบียง) — ทิศในภาพหมุนกลับด้าน
+  function bearingToYaw(scene, bearing) {
+    var n = scene.northOffset || 0;
+    return norm(scene.mirror ? n - bearing : bearing + n);
+  }
+  function yawToBearing(scene, yaw) {
+    var n = scene.northOffset || 0;
+    return norm(scene.mirror ? n - yaw : yaw - n);
+  }
 
   /* ---------- สร้างกราฟการเชื่อมต่อ (ลิงก์สองทาง) ---------- */
 

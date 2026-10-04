@@ -19,9 +19,9 @@ window.TOUR = {
       },
       {
         "label": "ระเบียงทางเดิน",
-        "x": 47.33,
+        "x": -7.61,
         "y": -5.03,
-        "w": 53.51,
+        "w": 70.51,
         "h": 16.66
       }
     ]
@@ -41,9 +41,9 @@ window.TOUR = {
       },
       {
         "label": "ระเบียงทางเดิน",
-        "x": 47.33,
+        "x": -7.61,
         "y": -5.03,
-        "w": 53.51,
+        "w": 70.51,
         "h": 16.66,
         "kind": "corridor"
       }
@@ -1211,10 +1211,11 @@ window.TOUR = {
       "description": "ประตูเชื่อมระหว่างห้องจัดแสดงกับระเบียงด้านนอก",
       "image": "images/panoramas/p195.jpg",
       "map": {
-        "x": 52.18,
+        "x": 52.57,
         "y": 3.89
       },
       "northOffset": 4.5,
+      "mirror": true,
       "links": [
         {
           "to": "p201"
@@ -1228,10 +1229,11 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p201.jpg",
       "map": {
-        "x": 61.14,
+        "x": 40.68,
         "y": 4.12
       },
       "northOffset": 0.1,
+      "mirror": true,
       "links": [
         {
           "to": "p203"
@@ -1245,10 +1247,11 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p203.jpg",
       "map": {
-        "x": 68.33,
+        "x": 31.13,
         "y": 4.47
       },
       "northOffset": -0.7,
+      "mirror": true,
       "links": [
         {
           "to": "p206"
@@ -1262,10 +1265,11 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p206.jpg",
       "map": {
-        "x": 75.53,
+        "x": 21.58,
         "y": 4.71
       },
       "northOffset": -1.1,
+      "mirror": true,
       "links": [
         {
           "to": "p210"
@@ -1279,10 +1283,11 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p210.jpg",
       "map": {
-        "x": 82.72,
+        "x": 12.03,
         "y": 4.99
       },
       "northOffset": 0.0,
+      "mirror": true,
       "links": [
         {
           "to": "p212"
@@ -1296,10 +1301,11 @@ window.TOUR = {
       "description": "ระเบียงทางเดินด้านนอกเลียบหอพุทธศิลป์",
       "image": "images/panoramas/p212.jpg",
       "map": {
-        "x": 89.92,
+        "x": 2.47,
         "y": 5.21
       },
       "northOffset": -0.3,
+      "mirror": true,
       "links": [
         {
           "to": "p220"
@@ -1316,10 +1322,11 @@ window.TOUR = {
       "description": "ลานโล่งหน้าทางเข้าหอพุทธศิลป์",
       "image": "images/panoramas/p215.jpg",
       "map": {
-        "x": 96.0,
+        "x": -5.61,
         "y": -1.15
       },
       "northOffset": 2.3,
+      "mirror": true,
       "links": [
         {
           "to": "p220"
@@ -1333,10 +1340,11 @@ window.TOUR = {
       "description": "ประตูทางเข้าหอพุทธศิลป์ มจร วิทยาเขตแพร่",
       "image": "images/panoramas/p220.jpg",
       "map": {
-        "x": 95.26,
+        "x": -4.62,
         "y": 5.39
       },
       "northOffset": -13.6,
+      "mirror": true,
       "links": [],
       "infos": []
     }
