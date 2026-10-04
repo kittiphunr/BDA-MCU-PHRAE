@@ -211,6 +211,7 @@
       if (to) goTo(to);
     } else if (e.key === "Escape") {
       hideInfo();
+      $("about").hidden = true;
     }
   });
 
@@ -313,6 +314,18 @@
     b.addEventListener("click", function () { togglePanel(b.dataset.close, false); });
   });
   $("btn-list").addEventListener("click", function () { togglePanel("art-list", false); togglePanel("scene-list"); });
+
+  /* หน้าข้อมูลโครงการและผู้พัฒนา */
+  function openAbout() {
+    var placed = (TOUR.artworks || []).length;
+    $("about-art-count").textContent = placed ? "(" + placed + " ชิ้น)" : "";
+    $("about").hidden = false;
+  }
+  $("btn-about").addEventListener("click", openAbout);
+  Array.prototype.forEach.call(document.querySelectorAll("[data-open-about]"), function (b) {
+    b.addEventListener("click", openAbout);
+  });
+  $("about").addEventListener("click", function (e) { if (e.target === this) this.hidden = true; });
   $("btn-art").addEventListener("click", function () { togglePanel("scene-list", false); togglePanel("art-list"); });
   $("btn-map").addEventListener("click", function () { togglePanel("minimap"); });
   if (window.matchMedia("(max-width: 720px)").matches) togglePanel("minimap", false);
