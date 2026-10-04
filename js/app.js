@@ -88,6 +88,13 @@
 
   /* ---------- ตั้งค่า Pannellum ---------- */
 
+  // หันไปทางลิงก์แรกที่ประกาศไว้ใน scene (ทางเดินต่อ) หรือลิงก์ใดก็ได้ถ้าไม่มี
+  function defaultYaw(s, hs) {
+    var links = hs.filter(function (h) { return h.type === "scene"; });
+    var first = s.links && s.links[0] && links.filter(function (h) { return h.sceneId === s.links[0].to; })[0];
+    return (first || links[0] || { yaw: 0 }).yaw;
+  }
+
   var scenesCfg = {};
   TOUR.scenes.forEach(function (s) {
     var hs = [];
@@ -96,7 +103,8 @@
     scenesCfg[s.id] = {
       type: "equirectangular",
       panorama: s.image,
-      yaw: s.yaw || 0,
+      // ค่าเริ่มต้น: หันไปทางลูกศรแรก (เดินต่อได้ทันทีเมื่อกระโดดมาจุดนี้)
+      yaw: s.yaw != null ? s.yaw : defaultYaw(s, hs),
       pitch: s.pitch || 0,
       hotSpots: hs
     };
@@ -281,8 +289,33 @@
     return n;
   }
 
+  // แปลงพิกัดแผนผังให้พอดีกรอบ (ถ้าไม่มีรูปแผนผัง/ห้อง จะซูมให้พอดีเส้นทาง)
+  var mapView = (function () {
+    var fp = TOUR.floorPlan || {};
+    var pts = TOUR.scenes.filter(function (s) { return s.map; }).map(function (s) { return s.map; });
+    if (fp.image || (fp.rooms && fp.rooms.length) || !pts.length) {
+      return { x: function (v) { return v; }, y: function (v) { return v; }, h: 100, k: 1 };
+    }
+    var xs = pts.map(function (p) { return p.x; }), ys = pts.map(function (p) { return p.y; });
+    var minX = Math.min.apply(null, xs), minY = Math.min.apply(null, ys);
+    var w = Math.max.apply(null, xs) - minX, h = Math.max.apply(null, ys) - minY;
+    var pad = Math.max(w, h) * 0.08 + 1;
+    var k = 100 / (Math.max(w, h * 1.4) + 2 * pad);
+    var offX = (100 - w * k) / 2;
+    return {
+      x: function (v) { return (v - minX) * k + offX; },
+      y: function (v) { return (v - minY + pad) * k; },
+      h: Math.max(45, (h + 2 * pad) * k),
+      k: k
+    };
+  })();
+  svg.setAttribute("viewBox", "0 0 100 " + mapView.h.toFixed(1));
+  svg.style.aspectRatio = (100 / mapView.h).toFixed(3);
+  var NODE_R = Math.min(2.4, Math.max(1.1, mapView.k * 0.9));
+
   function drawMap() {
     var cur = viewer.getScene();
+    var X = mapView.x, Y = mapView.y;
     svg.innerHTML = "";
     var fp = TOUR.floorPlan || {};
     if (fp.image) {
@@ -300,7 +333,7 @@
         var key = [s.id, to].sort().join("|");
         if (drawn[key] || !s.map || !byId[to].map) return;
         drawn[key] = true;
-        el("line", { x1: s.map.x, y1: s.map.y, x2: byId[to].map.x, y2: byId[to].map.y, class: "path" }, svg);
+        el("line", { x1: X(s.map.x), y1: Y(s.map.y), x2: X(byId[to].map.x), y2: Y(byId[to].map.y), class: "path" }, svg);
       });
     });
     // กรวยทิศที่มอง
@@ -314,7 +347,7 @@
     TOUR.scenes.forEach(function (s) {
       if (!s.map) return;
       var g = el("g", { class: "node" + (s.id === cur ? " current" : ""), tabindex: 0, role: "button" }, svg);
-      el("circle", { cx: s.map.x, cy: s.map.y, r: s.id === cur ? 3.2 : 2.4 }, g);
+      el("circle", { cx: X(s.map.x), cy: Y(s.map.y), r: s.id === cur ? NODE_R * 1.5 : NODE_R }, g);
       var title = el("title", {}, g);
       title.textContent = s.title;
       g.addEventListener("click", function () { goTo(s.id); });
@@ -326,7 +359,7 @@
     var s = currentScene();
     if (!cone || !s || !s.map) return;
     var heading = yawToBearing(s, viewer.getYaw());
-    cone.setAttribute("transform", "translate(" + s.map.x + " " + s.map.y + ") rotate(" + heading + ")");
+    cone.setAttribute("transform", "translate(" + mapView.x(s.map.x) + " " + mapView.y(s.map.y) + ") rotate(" + heading + ")");
   }
 
   /* ---------- โหมดแก้ไข (?edit=1) ช่วยหาค่า yaw / pitch ---------- */
